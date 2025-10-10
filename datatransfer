@@ -634,11 +634,11 @@
 
                         <li>Review <b>Parent Agreement Gap</b> resolution steps (Tableau walkthrough).</li>
 
-                        <li>Deep dive into <b>Fallback Usage & Segmentation</b> challenges (Challenge 4).</li>
+                        <li>Deep dive into Fallback Usage and Segment reporting challenges.</li>
 
-                        <li>Discussing <b>LoL & ARR</b> integrity issues (Challenge 2).</li>
+                        <li>Discussing key data field capture and integrity issues (Challenge 2)</li>
 
-                        <li>Identify minor system/reporting improvements for LatentView Team.</li>
+                        <!-- REMOVED: <li>Identify minor system/reporting improvements for LatentView Team.</li> -->
 
                     </ul>
 
@@ -680,7 +680,90 @@
 
                 </div>
 
+                
+                <!-- Day 4 Agenda (NEW CARD - MODIFIED) -->
 
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 4: Data Library Deep Dive & Ownership</h3>
+
+                    <!-- REMOVED: <p class="text-base font-semibold text-gray-600 mb-3 italic">Data Library Deep Dive: Okay.</p> -->
+
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+
+                        <!-- REMOVED: Multiple Workflows list item -->
+
+                        <li>Discussion on <b>Data Ownership</b>: shifting Legal Ops role from owner to <b>custodian</b> of Ironclad data.</li>
+
+                        <li>Analyzing Salesforce field ambiguity (e.g., ARR/Region) and the need for a <b>Data Dictionary</b>.</li>
+
+                        <!-- REMOVED: Tableau UAT folder list item -->
+
+                        <li>Establish Q4 priority: focusing on the <b>top 3-5 high-impact data problems</b> with business partner buy-in.</li>
+
+                    </ul>
+
+                    
+
+                    <!-- Flexible spacer -->
+
+                    <div class="flex-grow"></div>
+                    
+                    <!-- Video element is now positioned at the bottom of the card -->
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-base font-semibold text-green-600 mb-2">Day 4 Recap Video (Watch Here):</p>
+                        <!-- Iframe for responsive Google Drive Video Embed -->
+                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                            <iframe
+                                src="https://drive.google.com/file/d/1o_TkxmJfjKEchSeGdX9D7h--0Fo88B12/preview"
+                                frameborder="0"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen
+                                class="absolute top-0 left-0 w-full h-full"
+                            ></iframe>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Follow-up Button (Using ID 400 to avoid conflict with challenge cards 1-8) -->
+
+                    <button onclick="toggleResolution(400)" id="button-400" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+
+                        Show Day 4 Follow Ups
+
+                    </button>
+
+
+
+                    <!-- FOLLOW UP NOTES (Hidden by default) -->
+
+                    <div id="resolution-400" class="mt-4 pt-4 border-t border-gray-200 hidden">
+
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 4</h4>
+
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+
+                            <li>Srija to create a UAT folder or separate folder in Tableau for data issues/gaps that need to be addressed.</li>
+
+                            <li>Srija and Mano to check how many opportunities are closed won where Ironclad workflow ID is null and map to Ironclad to see if workflows are in signed status. Srija already has a partial build for this.</li>
+
+                            <li>Srija and Mano to identify and list all Salesforce fields used in dashboards, including which object they come from.</li>
+
+                            <li>Kalyani to work with Rigel to establish the right sources of truth for data ownership.</li>
+
+                            <li>Kalyani to validate with Salesforce team what fields are being used and confirm their purpose.</li>
+
+                            <li>Kalyani, Vigi and Amit to meet in person to identify low-hanging data issues that can be quickly solved.</li>
+
+                            <li>Dan and Kalyani to identify top 3-5 priority data problems to solve in Q4.</li>
+
+                            <li>Kalyani to meet with Emily to get input on the most important problems to focus on.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -707,6 +790,8 @@
             <!-- HEADER UPDATED TO 8 KEY CHALLENGES -->
 
             <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">8 Key Challenges & Gaps</h2>
+
+            <!-- NOTE: Updated message here -->
 
             <p class="text-lg mb-6 text-gray-600">These tiles detail the key challenges and gaps. Resolution Notes are currently available for Challenge 1, 2, 3, and 4.</p>
 
@@ -946,21 +1031,23 @@
 
 
 
-                <!-- Tile 5: Consolidated Data Library (Data Governance & Consistency) -->
+                <!-- Tile 5: Consolidated Data Library (Data Governance & Consistency) -- REMOVED BUTTON/NOTES -->
 
                 <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                    <div id="challenge-5" class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
                         <h3 class="text-xl font-bold mb-3 text-gray-900">5. Consolidated Data Library</h3>
 
                         <p class="text-gray-600 flex-grow">
 
-                            Need to establish a single, reliable source for data definitions and fields to ensure consistency. This addresses which of the <b>multiple Salesforce fields</b> (e.g., Region) is the source of truth, and requires a blueprint of Procore's core agreement structure.
+                            Need to establish a single, reliable source for data definitions and fields to ensure consistency. This addresses which of the <b>multiple Salesforce fields</b> (e.g., Region) is the source of truth, and requires a blueprint of Procore's core agreement and order form data structure.
 
                         </p>
 
                         <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Data Governance & Consistency</span>
+
+                        <!-- RESOLUTION BUTTON/NOTES REMOVED -->
 
                     </div>
 
@@ -2146,7 +2233,7 @@
 
             if (!resolutionDiv || !button) {
 
-                console.error(`Elements for challenge ID ${id} not found.`);
+                console.error(`Elements for ID ${id} not found.`);
 
                 return;
 
@@ -2172,7 +2259,15 @@
 
                 resolutionDiv.classList.add('hidden');
 
-                button.textContent = 'Show Resolution/Examples';
+                if(id === 400) {
+
+                    button.textContent = 'Show Day 4 Follow Ups';
+
+                } else {
+
+                    button.textContent = 'Show Resolution/Examples';
+
+                }
 
                 button.classList.remove('bg-gray-400');
 
@@ -2599,3 +2694,4 @@
 </body>
 
 </html>
+
