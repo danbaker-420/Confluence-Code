@@ -378,7 +378,7 @@
 
                 <a href="#agenda" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Agenda</a>
 
-                <a href="#actions" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Key Actions</a>
+                <!-- REMOVED KEY ACTIONS LINK -->
 
                 <a href="#challenges" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Challenges</a>
 
@@ -562,11 +562,26 @@
 
                     </div>
 
+                    
+                    <!-- NEW: Follow-up Button (Day 1) -->
+                    <button onclick="toggleResolution(100)" id="button-100" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        Show Day 1 Follow Ups
+                    </button>
+
+                    <!-- NEW: FOLLOW UP NOTES (Hidden by default) -->
+                    <div id="resolution-100" class="mt-4 pt-4 border-t border-gray-200 hidden">
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 1</h4>
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                            <li>Ensure all team members have access to the Tableau Dashboards, Confluence, and Jira.</li>
+                            <li>Dan to continue daily site updates and documentation.</li>
+                            <li>Team to review the 8 Key Challenges in detail prior to Day 2 deep dive.</li>
+                        </ul>
+                    </div>
                 </div>
 
 
 
-                <!-- Day 2 Agenda -->
+                <!-- Day 2 Agenda (MODIFIED: Removed Challenge Resolution Button) -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
@@ -589,7 +604,6 @@
                     <div class="flex-grow"></div>
 
                     
-
                     <!-- Video element for Day 2 recap -->
 
                     <div class="mt-4 pt-4 border-t border-gray-200">
@@ -618,11 +632,31 @@
 
                     </div>
 
+                    
+                    <!-- REMOVED: RESOLUTION LINK BUTTON for Challenge 1 -->
+                    <!-- <a href="#challenge-1" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md text-center transition-colors duration-200">
+                        View Deep Dive Resolution: Challenge 1
+                    </a> -->
+                    
+                    <!-- NEW: Follow-up Button (Day 2) -->
+                    <button onclick="toggleResolution(200)" id="button-200" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        Show Day 2 Follow Ups
+                    </button>
+
+                    <!-- NEW: FOLLOW UP NOTES (Hidden by default) -->
+                    <div id="resolution-200" class="mt-4 pt-4 border-t border-gray-200 hidden">
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 2</h4>
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                            <li>Kalyani and Vighnesh to meet with Lily or Rebecca to understand the agreement structure for new logos, renewals, and upsells.</li>
+                            <li>Kalyani to identify and establish regular cadence with Salesforce data owners to ensure accountability for data accuracy.</li>
+                            <li>Kalyani and Vighnesh to reach out to teams that request reports to understand their needs and add them to the roadmap.</li>
+                        </ul>
+                    </div>
                 </div>
 
 
 
-                <!-- Day 3 Agenda (From Transcript) -->
+                <!-- Day 3 Agenda (From Transcript) (MODIFIED: Removed Challenge Resolution Buttons) -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
@@ -649,7 +683,6 @@
                     <div class="flex-grow"></div>
 
                     
-
                     <!-- Video element is now positioned at the bottom of the card -->
 
                     <div class="mt-4 pt-4 border-t border-gray-200">
@@ -678,9 +711,32 @@
 
                     </div>
 
+                    <!-- REMOVED: RESOLUTION LINK BUTTONS for Challenge 2 & 4 -->
+                    <!-- <div class="flex flex-row space-x-2 mt-4">
+                        <a href="#challenge-2" class="procore-button w-1/2 px-3 py-2 text-sm rounded-lg font-bold shadow-md text-center transition-colors duration-200">
+                            View Resolution: Challenge 2
+                        </a>
+                        <a href="#challenge-4" class="procore-button w-1/2 px-3 py-2 text-sm rounded-lg font-bold shadow-md text-center transition-colors duration-200">
+                            View Resolution: Challenge 4
+                        </a>
+                    </div> -->
+                    
+                    <!-- NEW: Follow-up Button (Day 3) -->
+                    <button onclick="toggleResolution(300)" id="button-300" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        Show Day 3 Follow Ups
+                    </button>
+
+                    <!-- NEW: FOLLOW UP NOTES (Hidden by default) -->
+                    <div id="resolution-300" class="mt-4 pt-4 border-t border-gray-200 hidden">
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 3</h4>
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                            <li>Srija to Add <b>Opportunity Record Name field</b> to the <b>Tableau Opportunity Detail</b> for easier cross-reference/research.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                
+
+
                 <!-- Day 4 Agenda (NEW CARD - MODIFIED) -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
@@ -708,6 +764,7 @@
                     <!-- Flexible spacer -->
 
                     <div class="flex-grow"></div>
+
                     
                     <!-- Video element is now positioned at the bottom of the card -->
                     <div class="mt-4 pt-4 border-t border-gray-200">
@@ -1055,7 +1112,7 @@
 
 
 
-                <!-- Tile 6 (SWAPPED from 8): Ticketing Template & Triage (Workflow & Efficiency) -->
+                <!-- Tile 6 (SWAPPED from 8): Ticketing Template & Triage (Workflow & Efficiency) - UPDATED WITH NEW LINK -->
 
                 <div class="flex h-full">
 
@@ -1066,7 +1123,9 @@
                         <p class="text-gray-600 flex-grow">
 
                             A lack of a formalized template and process for gathering business requirements has resulted in ambiguous, anecdotal tickets. The new template is essential for efficient triage, prioritization, and execution.
-
+                            <br><br>
+                            Current Data Request Template: 
+                            <a href="https://docs.google.com/document/d/16EPAu2LRM3hUG1brffpt6cnbSdxVRz92/edit?pli=1" target="_blank" class="procore-text-orange font-bold hover:underline">CLM Data Request Template (Google Doc)</a>
                         </p>
 
                         <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Workflow & Efficiency</span>
@@ -1256,7 +1315,6 @@
                 </div>
 
                 
-
                 <!-- NEW: Collapsible Draft Roadmap Container -->
 
                 <div class="mt-10 pt-8 border-t border-gray-300">
@@ -1854,7 +1912,6 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 equal-height-grid">
 
                 
-
                 <!-- Partner 1: CLO -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
@@ -1934,7 +1991,6 @@
                 </div>
 
                 
-
                 <!-- Partner 6: IT/DTS -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
@@ -1951,7 +2007,7 @@
 
 
 
-                <!-- Partner 7: Luke Paris's Data Engineering Team -->
+                <!-- Partner 7: Luke Paris's Data Engineering Team (MODIFIED) -->
 
                 <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
@@ -1959,7 +2015,7 @@
 
                     <p class="text-gray-600 flex-grow">
 
-                        Key contacts for data infrastructure, managing tables in Snowflake and Databricks, and supporting the critical PR merge process. Contacts include: <b>Scott Murray</b> and <b>Shishir Tewari</b>.
+                        Key contacts for data infrastructure, managing tables in Snowflake and Databricks, and supporting the critical PR merge process. Contacts include: <b>Amit Chaudhary (+Rooksana Sultana)</b>, <b>Scott Murray</b>, and <b>Shishir Tewari</b>.
 
                     </p>
 
@@ -2031,95 +2087,7 @@
 
 
 
-        <!-- Section: Key Actions (Now at the bottom) -->
-
-        <section id="actions" class="py-10">
-
-            <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-yellow-500">
-
-                <h2 class="text-3xl font-bold mb-4 procore-text-orange border-b-2 procore-border-orange pb-2 inline-block">Immediate Key Actions</h2>
-
-                <p class="text-lg mb-6 text-gray-600">
-
-                    These are critical setup items to ensure the transition team has the necessary access to begin work immediately.
-
-                </p>
-
-                <ul class="space-y-3 text-lg">
-
-                    <li class="flex items-center text-gray-800">
-
-                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Access to Tableau for all team members (visualizations and dashboards).
-
-                    </li>
-
-                    <li class="flex items-center text-gray-800">
-
-                        <!-- UPDATED ICON for 'Done' item for better consistency -->
-
-                        <svg class="w-6 h-6 mr-3 text-green-500 opacity-60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Access to Confluence for all team members (documentation and knowledge management portal) (Done).
-
-                    </li>
-
-                    <li class="flex items-center text-gray-800">
-
-                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Access to JIRA dashboard for all team members (for task management and tracking).
-
-                    </li>
-
-                    <li class="flex items-center text-gray-800">
-
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Daily site update (responsible: Dan).
-
-                    </li>
-
-                    <!-- UPDATED: Confirmed action item is correct and important for cross-reference -->
-
-                    <li class="flex items-center text-gray-800">
-
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Add Opportunity Record Name field to the Tableau Opportunity Detail for easier cross-reference/research.
-
-                    </li>
-
-                    <!-- NEW ACTION ITEM ADDED -->
-
-                    <li class="flex items-center text-gray-800">
-
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
-                        Dan to identify SFDC data ownership.
-
-                    </li>
-
-                </ul>
-
-                
-
-                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
-
-                <div class="mt-6 pt-4 border-t border-gray-200 text-right">
-
-                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
-
-                        &uarr; Back to Top
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
+        <!-- Section: Key Actions (Now at the bottom) - REMOVED -->
 
 
 
@@ -2243,32 +2211,43 @@
 
             if (resolutionDiv.classList.contains('hidden')) {
 
-                // Show notes
-
+                // Show notes -> Button should say "Hide..."
                 resolutionDiv.classList.remove('hidden');
-
-                button.textContent = 'Hide Resolution/Examples';
-
+                
+                // Set the correct "Hide" text
+                if (id === 100) {
+                    button.textContent = 'Hide Day 1 Follow Ups';
+                } else if (id === 200) {
+                    button.textContent = 'Hide Day 2 Follow Ups';
+                } else if (id === 300) {
+                    button.textContent = 'Hide Day 3 Follow Ups';
+                } else if (id === 400) {
+                    button.textContent = 'Hide Day 4 Follow Ups';
+                } else {
+                    button.textContent = 'Hide Resolution/Examples'; // For Challenge 1-8
+                }
+                
                 button.classList.add('bg-gray-400');
-
                 button.classList.remove('procore-button');
 
             } else {
 
-                // Hide notes
-
+                // Hide notes -> Button should revert to "Show..."
                 resolutionDiv.classList.add('hidden');
-
+                
+                // Set the correct "Show" text
                 if(id === 400) {
-
                     button.textContent = 'Show Day 4 Follow Ups';
-
+                } else if (id === 200) {
+                    button.textContent = 'Show Day 2 Follow Ups';
+                } else if (id === 300) {
+                    button.textContent = 'Show Day 3 Follow Ups';
+                } else if (id === 100) {
+                    button.textContent = 'Show Day 1 Follow Ups';
                 } else {
-
                     button.textContent = 'Show Resolution/Examples';
-
                 }
-
+                
                 button.classList.remove('bg-gray-400');
 
                 button.classList.add('procore-button');
@@ -2694,4 +2673,3 @@
 </body>
 
 </html>
-
