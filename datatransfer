@@ -2,349 +2,349 @@
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LRC CLM Data Strategy</title>
+    <title>LRC CLM Data Strategy</title>
 
-    <!-- Load Tailwind CSS -->
+    <!-- Load Tailwind CSS -->
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Procore Brand Simulation & Smooth Scroll -->
+    <!-- Procore Brand Simulation & Smooth Scroll -->
 
-    <style>
+    <style>
 
-        /* --- Existing Procore Styles --- */
+        /* --- Existing Procore Styles --- */
 
-        :root {
+        :root {
 
-            --procore-blue: #00274C; /* Dark Navy/Blue */
+            --procore-blue: #00274C; /* Dark Navy/Blue */
 
-            --procore-orange: #FF6A00; /* Primary Accent Orange */
+            --procore-orange: #FF6A00; /* Primary Accent Orange */
 
-            --procore-light-gray: #f4f5f7;
+            --procore-light-gray: #f4f5f7;
 
-        }
+        }
 
-        html {
+        html {
 
-            /* Ensures native smooth scrolling as a fallback */
+            /* Ensures native smooth scrolling as a fallback */
 
-            scroll-behavior: smooth;
+            scroll-behavior: smooth;
 
-            /* RE-ADDED: Native handling of sticky header offset (6rem = 96px) */
+            /* RE-ADDED: Native handling of sticky header offset (6rem = 96px) */
 
-            scroll-padding-top: 6rem;
+            scroll-padding-top: 6rem;
 
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
 
-        }
+        }
 
-        .procore-bg {
+        .procore-bg {
 
-            background-color: var(--procore-blue);
+            background-color: var(--procore-blue);
 
-        }
+        }
 
-        .procore-text-orange {
+        .procore-text-orange {
 
-            color: var(--procore-orange);
+            color: var(--procore-orange);
 
-        }
+        }
 
-        .procore-border-orange {
+        .procore-border-orange {
 
-            border-color: var(--procore-orange);
+            border-color: var(--procore-orange);
 
-        }
+        }
 
-        .procore-button {
+        .procore-button {
 
-            background-color: var(--procore-orange);
+            background-color: var(--procore-orange);
 
-            color: white;
+            color: white;
 
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background-color 0.3s, transform 0.2s;
 
-            border-radius: 0.5rem; /* Added rounded corners */
+            border-radius: 0.5rem; /* Added rounded corners */
 
-        }
+        }
 
-        .procore-button:hover {
+        .procore-button:hover {
 
-            background-color: #E65C00; /* Slightly darker orange */
+            background-color: #E65C00; /* Slightly darker orange */
 
-            transform: translateY(-1px);
+            transform: translateY(-1px);
 
-        }
+        }
 
-        /* Custom styling for nav links on small screens if they exceed width */
+        /* Custom styling for nav links on small screens if they exceed width */
 
-        .nav-scroll {
+        .nav-scroll {
 
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch;
 
-        }
+        }
 
-        
+        
 
-        /* Ensures all grid rows, including challenges and roadmap phases, maintain equal height */
+        /* Ensures all grid rows, including challenges and roadmap phases, maintain equal height */
 
-        .equal-height-grid > div,
+        .equal-height-grid > div,
 
-        .equal-height-grid > a > div { /* Added rule for anchor wrappers in dashboards/partners */
+        .equal-height-grid > a > div { /* Added rule for anchor wrappers in dashboards/partners */
 
-            display: flex;
+            display: flex;
 
-            flex-direction: column;
+            flex-direction: column;
 
-            height: 100%;
+            height: 100%;
 
-        }
+        }
 
 
 
-        /* --- NEW SWIMLANE ROADMAP STYLES --- */
+        /* --- NEW SWIMLANE ROADMAP STYLES --- */
 
-        
+        
 
-        /* Main container for all systems (vertical stack) */
+        /* Main container for all systems (vertical stack) */
 
-        .system-lane-container {
+        .system-lane-container {
 
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.5rem;
 
-            background-color: white;
+            background-color: white;
 
-            padding: 1rem;
+            padding: 1rem;
 
-            border-radius: 0.5rem;
+            border-radius: 0.5rem;
 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
 
-        }
+        }
 
 
 
-        /* Horizontal flow container for quarters within a system lane (scrollable) */
+        /* Horizontal flow container for quarters within a system lane (scrollable) */
 
-        .roadmap-container-flow {
+        .roadmap-container-flow {
 
-            display: flex;
+            display: flex;
 
-            gap: 16px; /* Spacing between quarter columns */
+            gap: 16px; /* Spacing between quarter columns */
 
-            padding-bottom: 20px; /* Space for the scroll bar */
+            padding-bottom: 20px; /* Space for the scroll bar */
 
-            overflow-x: auto;
+            overflow-x: auto;
 
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #e5e7eb;
 
-            padding-top: 1rem;
+            padding-top: 1rem;
 
-        }
+        }
 
 
 
-        /* --- Quarter Column Styles (Key to Horizontal Layout) --- */
+        /* --- Quarter Column Styles (Key to Horizontal Layout) --- */
 
-        .quarter-column {
+        .quarter-column {
 
-            min-width: 300px; /* Fixed width to encourage horizontal scrolling */
+            min-width: 300px; /* Fixed width to encourage horizontal scrolling */
 
-            flex-shrink: 0; /* Prevent columns from shrinking below min-width */
+            flex-shrink: 0; /* Prevent columns from shrinking below min-width */
 
-            border-right: 1px solid #e5e7eb;
+            border-right: 1px solid #e5e7eb;
 
-            padding-right: 1rem;
+            padding-right: 1rem;
 
-        }
+        }
 
-        .quarter-column:last-child {
+        .quarter-column:last-child {
 
-            border-right: none;
+            border-right: none;
 
-            padding-right: 0;
+            padding-right: 0;
 
-        }
+        }
 
-        
+        
 
-        /* Styles for the Quarter headers, which are now repeated in each lane */
+        /* Styles for the Quarter headers, which are now repeated in each lane */
 
-        .quarter-header {
+        .quarter-header {
 
-            background-color: #1e3a8a; /* Dark blue background for the timeline */
+            background-color: #1e3a8a; /* Dark blue background for the timeline */
 
-            color: white;
+            color: white;
 
-            font-size: 1rem;
+            font-size: 1rem;
 
-            font-weight: 600;
+            font-weight: 600;
 
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1rem;
 
-            text-align: center;
+            text-align: center;
 
-            border-radius: 0.25rem;
+            border-radius: 0.25rem;
 
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
 
-        }
+        }
 
 
 
-        .backlog-header {
+        .backlog-header {
 
-            background-color: #6b7280; /* Gray background for the backlog */
+            background-color: #6b7280; /* Gray background for the backlog */
 
-            color: white;
+            color: white;
 
-            font-size: 1rem;
+            font-size: 1rem;
 
-            font-weight: 600;
+            font-weight: 600;
 
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1rem;
 
-            text-align: center;
+            text-align: center;
 
-            border-radius: 0.25rem;
+            border-radius: 0.25rem;
 
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
 
-        }
+        }
 
 
 
-        /* --- System Lane Header --- */
+        /* --- System Lane Header --- */
 
-        .system-header {
+        .system-header {
 
-            font-size: 2rem;
+            font-size: 2rem;
 
-            font-weight: 800;
+            font-weight: 800;
 
-            color: #1e3a8a;
+            color: #1e3a8a;
 
-            margin-bottom: 1rem;
+            margin-bottom: 1rem;
 
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
 
-            border-bottom: 3px solid #3b82f6;
+            border-bottom: 3px solid #3b82f6;
 
-        }
+        }
 
-        
+        
 
-        /* --- Project Card and Status Styles --- */
+        /* --- Project Card and Status Styles --- */
 
-        .status-pill {
+        .status-pill {
 
-            padding: 2px 8px;
+            padding: 2px 8px;
 
-            border-radius: 9999px;
+            border-radius: 9999px;
 
-            font-size: 0.75rem;
+            font-size: 0.75rem;
 
-            font-weight: 600;
+            font-weight: 600;
 
-            white-space: nowrap;
+            white-space: nowrap;
 
-        }
+        }
 
-        /* Custom styles for status colors (used for inline expansion) */
+        /* Custom styles for status colors (used for inline expansion) */
 
-        .status-In-Progress { background-color: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+        .status-In-Progress { background-color: #d1fae5; color: #065f46; border: 1px solid #10b981; }
 
-        .status-Open { background-color: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
+        .status-Open { background-color: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
 
-        .status-On-Hold { background-color: #e5e7eb; color: #4b5563; border: 1px solid #6b7280; }
+        .status-On-Hold { background-color: #e5e7eb; color: #4b5563; border: 1px solid #6b7280; }
 
-        .status-Waiting-for-Customer { background-color: #fffbeb; color: #9a3412; border: 1px solid #f59e0b; }
+        .status-Waiting-for-Customer { background-color: #fffbeb; color: #9a3412; border: 1px solid #f59e0b; }
 
-        
+        
 
-        /* UPDATED CARD STYLE */
+        /* UPDATED CARD STYLE */
 
-        .roadmap-item {
+        .roadmap-item {
 
-            transition: all 0.2s;
+            transition: all 0.2s;
 
-            cursor: pointer;
+            cursor: pointer;
 
-            /* Enhanced shadow for a lifted card look */
+            /* Enhanced shadow for a lifted card look */
 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); 
 
-            margin-bottom: 12px; /* Increased margin */
+            margin-bottom: 12px; /* Increased margin */
 
-            padding: 12px; /* Increased padding */
+            padding: 12px; /* Increased padding */
 
-            border-radius: 0.75rem; /* More rounded corners */
+            border-radius: 0.75rem; /* More rounded corners */
 
-            background-color: #ffffff; /* Solid white background */
+            background-color: #ffffff; /* Solid white background */
 
-            border: 1px solid #e0e7ff; /* Light blue border */
+            border: 1px solid #e0e7ff; /* Light blue border */
 
-            height: fit-content; 
+            height: fit-content; 
 
-            display: flex; /* Flex layout for internal card content */
+            display: flex; /* Flex layout for internal card content */
 
-            flex-direction: column;
+            flex-direction: column;
 
-            gap: 2px; /* Reduced gap for more info */
+            gap: 2px; /* Reduced gap for more info */
 
-        }
+        }
 
-        .roadmap-item:hover {
+        .roadmap-item:hover {
 
-            transform: translateY(-3px); /* Slightly more lift on hover */
+            transform: translateY(-3px); /* Slightly more lift on hover */
 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
-            border-color: #3b82f6; /* Blue highlight border on hover */
+            border-color: #3b82f6; /* Blue highlight border on hover */
 
-        }
+        }
 
-        /* Style for the inline details block */
+        /* Style for the inline details block */
 
-        .roadmap-detail p {
+        .roadmap-detail p {
 
-             margin: 0;
+             margin: 0;
 
-        }
+        }
 
-        .card-label {
+        .card-label {
 
-            font-weight: 500;
+            font-weight: 500;
 
-            color: #4b5563; /* Gray color for labels */
+            color: #4b5563; /* Gray color for labels */
 
-            font-size: 0.65rem; /* Smaller font for the label */
+            font-size: 0.65rem; /* Smaller font for the label */
 
-            text-transform: uppercase;
+            text-transform: uppercase;
 
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05em;
 
-        }
+        }
 
-        .card-value {
+        .card-value {
 
-            font-weight: 600;
+            font-weight: 600;
 
-            font-size: 0.8rem;
+            font-size: 0.8rem;
 
-            color: #1f2937; /* Darker gray for value */
+            color: #1f2937; /* Darker gray for value */
 
-        }
+        }
 
 
 
-        /* Removed modal-overlay CSS */
+        /* Removed modal-overlay CSS */
 
-    </style>
+    </style>
 
 </head>
 
@@ -352,2023 +352,2249 @@
 
 
 
-    <!-- Header (Title and Menu) -->
+    <!-- Header (Title and Menu) -->
 
-    <header class="procore-bg text-white shadow-lg sticky top-0 z-50 h-auto">
+    <header class="procore-bg text-white shadow-lg sticky top-0 z-50 h-auto">
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center">
 
-            
+            
 
-            <!-- Title -->
+            <!-- Title -->
 
-            <h1 class="text-2xl font-extrabold tracking-tight mb-2 sm:mb-0">
+            <h1 class="text-2xl font-extrabold tracking-tight mb-2 sm:mb-0">
 
-                <span class="procore-text-orange">LRC</span> CLM Data Strategy
+                <span class="procore-text-orange">LRC</span> CLM Data Strategy
 
-            </h1>
+            </h1>
 
-            
+            
 
-            <!-- Navigation Menu (Using standard hash links for native scrolling) -->
+            <!-- Navigation Menu (Using standard hash links for native scrolling) -->
 
-            <nav class="flex space-x-4 overflow-x-auto nav-scroll py-1">
+            <nav class="flex space-x-4 overflow-x-auto nav-scroll py-1">
 
-                <a href="#overview" class="text-sm font-bold transition-colors duration-200 hover:text-gray-300 procore-text-orange whitespace-nowrap">Overview</a>
+                <a href="#overview" class="text-sm font-bold transition-colors duration-200 hover:text-gray-300 procore-text-orange whitespace-nowrap">Overview</a>
 
-                <a href="#agenda" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Agenda</a>
+                <a href="#agenda" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Agenda</a>
 
-                <a href="#actions" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Key Actions</a>
+                <a href="#actions" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Key Actions</a>
 
-                <a href="#challenges" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Challenges</a>
+                <a href="#challenges" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Challenges</a>
 
-                <a href="#roadmap" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Roadmap</a>
+                <a href="#roadmap" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Roadmap</a>
 
-                <a href="#dashboards" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Dashboards</a>
+                <a href="#dashboards" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Dashboards</a>
 
-                <a href="#tools" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Tools</a>
+                <a href="#tools" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Tools</a>
 
-                <a href="#team" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Partners</a>
+                <!-- NEW NAVIGATION LINK -->
 
-            </nav>
+                <a href="#ironclad-links" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">CLM Resources</a>
 
-        </div>
+                <a href="#team" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Partners</a>
 
-    </header>
+            </nav>
 
+        </div>
 
+    </header>
 
-    <!-- Main Content Container -->
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
+    <!-- Main Content Container -->
 
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-        <!-- Section: Overview & Context (Hero Block) -->
 
-        <section id="overview" class="py-10">
 
-            <div class="procore-bg p-10 rounded-xl shadow-2xl text-white text-center">
+        <!-- Section: Overview & Context (Hero Block) -->
 
-                <p class="text-sm font-semibold uppercase opacity-75 mb-4">Project Focus</p>
+        <section id="overview" class="py-10">
 
-                <!-- REVERTED H2 TITLE -->
+            <div class="procore-bg p-10 rounded-xl shadow-2xl text-white text-center">
 
-                <h2 class="text-4xl sm:text-5xl font-extrabold mb-2">
+                <p class="text-sm font-semibold uppercase opacity-75 mb-4">Project Focus</p>
 
-                    CLM Data Strategy: The Road Ahead
+                <!-- REVERTED H2 TITLE -->
 
-                </h2>
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-2">
 
-                <p class="text-xl font-bold mb-8 procore-text-orange">
+                    CLM Data Strategy: The Road Ahead
 
-                    Data Bootcamp and Knowledge Transfer (Oct 6 - 13, 2025)
+                </h2>
 
-                </p>
+                <p class="text-xl font-bold mb-8 procore-text-orange">
 
-                <div class="border-t border-gray-500 pt-6">
+                    Data Bootcamp and Knowledge Transfer (Oct 6 - 13, 2025)
 
-                    
+                </p>
 
-                    <!-- UPDATED: REMOVED 'underline' class from all focus areas -->
+                <div class="border-t border-gray-500 pt-6">
 
-                    <p class="text-lg font-medium mb-4">
+                    
 
-                        <span class="font-extrabold procore-text-orange">Gap Analysis Focus Areas:</span>
+                    <!-- UPDATED: REMOVED 'underline' class from all focus areas -->
 
-                        <span class="font-bold text-white">Contract & Data Integrity</span>,
+                    <p class="text-lg font-medium mb-4">
 
-                        <span class="font-bold text-white">Data & Process</span>,
+                        <span class="font-extrabold procore-text-orange">Gap Analysis Focus Areas:</span>
 
-                        <span class="font-bold text-white">Process & Enablement</span>,
+                        <span class="font-bold text-white">Contract & Data Integrity</span>,
 
-                        <span class="font-bold text-white">System & Integration</span>,
+                        <span class="font-bold text-white">Data & Process</span>,
 
-                        <span class="font-bold text-white">Data Governance & Consistency</span>,
+                        <span class="font-bold text-white">Process & Enablement</span>,
 
-                        <span class="font-bold text-white">Workflow & Efficiency</span>,
+                        <span class="font-bold text-white">System & Integration</span>,
 
-                        <span class="font-bold text-white">Technical Debt & Stability</span>,
+                        <span class="font-bold text-white">Data Governance & Consistency</span>,
 
-                        and <span class="font-bold text-white">Model & Bandwidth</span>.
+                        <span class="font-bold text-white">Workflow & Efficiency</span>,
 
-                    </p>
+                        <span class="font-bold text-white">Technical Debt & Stability</span>,
 
-                    
+                        and <span class="font-bold text-white">Model & Bandwidth</span>.
 
-                    <!-- REQUESTED NARRATIVE -->
+                    </p>
 
-                    <p class="text-lg font-medium mb-6">
+                    
 
-                        <span class="font-extrabold procore-text-orange">The Core Opportunity:</span> These focus areas represent the interconnected challenges. Without a deep, shared understanding of how these gaps feed into one another, we cannot successfully navigate and execute on either <b>day-to-day requests</b> or the <b>long-term strategic roadmap</b>. <b>This holistic understanding</b> is essential for sustainable success.
+                    <!-- REQUESTED NARRATIVE -->
 
-                    </p>
+                    <p class="text-lg font-medium mb-6">
 
-                    
+                        <span class="font-extrabold procore-text-orange">The Core Opportunity:</span> These focus areas represent the interconnected challenges. Without a deep, shared understanding of how these gaps feed into one another, we cannot successfully navigate and execute on either <b>day-to-day requests</b> or the <b>long-term strategic roadmap</b>. <b>This holistic understanding</b> is essential for sustainable success.
 
-                    <!-- Using standard hash link for native scrolling -->
+                    </p>
 
-                    <a href="#challenges" id="scroll-to-challenges" class="procore-button inline-flex items-center px-6 py-3 text-sm rounded-lg font-bold shadow-xl">
+                    
 
-                        View Challenges & Roadmap
+                    <!-- Using standard hash link for native scrolling -->
 
-                        <!-- Simple downward arrow icon -->
+                    <a href="#challenges" id="scroll-to-challenges" class="procore-button inline-flex items-center px-6 py-3 text-sm rounded-lg font-bold shadow-xl">
 
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        View Challenges & Roadmap
 
-                    </a>
+                        <!-- Simple downward arrow icon -->
 
-                </div>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 
-            </div>
+                    </a>
 
-        </section>
+                </div>
 
-        
+            </div>
 
-        <!-- Section: Daily Agenda -->
+        </section>
 
-        <section id="agenda" class="py-10">
+        
 
-            <h2 class="text-3xl font-bold mb-6 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Daily Agenda</h2>
+        <!-- Section: Daily Agenda -->
 
-            
+        <section id="agenda" class="py-10">
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
+            <h2 class="text-3xl font-bold mb-6 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Daily Agenda</h2>
 
+            
 
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
 
-                <!-- Day 1 Agenda -->
 
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 1: Kickoff & Scoping</h3>
+                <!-- Day 1 Agenda -->
 
-                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                        <li>Welcome & Objective</li>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 1: Kickoff & Scoping</h3>
 
-                        <li>Introductions (Team & Partners)</li>
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
 
-                        <li>Transition Overview & Scope</li>
+                        <li>Welcome & Objective</li>
 
-                        <li>Initial Team Roles</li>
+                        <li>Introductions (Team & Partners)</li>
 
-                        <li>Next Steps & Q&A</li>
+                        <li>Transition Overview & Scope</li>
 
-                        <li>Wrap Up</li>
+                        <li>Initial Team Roles</li>
 
-                    </ul>
+                        <li>Next Steps & Q&A</li>
 
-                    
+                        <li>Wrap Up</li>
 
-                    <!-- Flexible spacer pushes the content below it (the video) to the bottom -->
+                    </ul>
 
-                    <div class="flex-grow"></div>
+                    
 
+                    <!-- Flexible spacer pushes the content below it (the video) to the bottom -->
 
+                    <div class="flex-grow"></div>
 
-                    <!-- Video element is now positioned at the bottom of the card -->
 
-                    <div class="mt-4 pt-4 border-t border-gray-200">
 
-                        <!-- UPDATED FONT COLOR TO text-green-600 -->
+                    <!-- Video element is now positioned at the bottom of the card -->
 
-                        <p class="text-base font-semibold text-green-600 mb-2">Day 1 Recap Video (Watch Here):</p>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
 
-                        <!-- Iframe for responsive Google Drive Video Embed -->
+                        <!-- UPDATED FONT COLOR TO text-green-600 -->
 
-                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <p class="text-base font-semibold text-green-600 mb-2">Day 1 Recap Video (Watch Here):</p>
 
-                            <iframe
+                        <!-- Iframe for responsive Google Drive Video Embed -->
 
-                                src="https://drive.google.com/file/d/1_Xd-pmgorr2zl0vkC85yX8rVhGLeLHEM/preview"
+                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
 
-                                frameborder="0"
+                            <iframe
 
-                                allow="autoplay; encrypted-media"
+                                src="https://drive.google.com/file/d/1_Xd-pmgorr2zl0vkC85yX8rVhGLeLHEM/preview"
 
-                                allowfullscreen
+                                frameborder="0"
 
-                                class="absolute top-0 left-0 w-full h-full"
+                                allow="autoplay; encrypted-media"
 
-                            ></iframe>
+                                allowfullscreen
 
-                        </div>
+                                class="absolute top-0 left-0 w-full h-full"
 
-                    </div>
+                            ></iframe>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Day 2 Agenda -->
 
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 2: Site Walkthrough & Parent Migration Gap Deep Dive </h3>
+                <!-- Day 2 Agenda -->
 
-                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                        <li>LRC CLM Data Strategy Transition site walkthrough</li>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 2: Site Walkthrough & Parent Migration Gap Deep Dive </h3>
 
-                        <!-- Using standard hash link for native scrolling -->
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
 
-                        <li><a href="#challenge-1" class="text-gray-700 hover:text-gray-900 hover:underline">Key Challenges and Gaps: Deep dive into <b>1. Parent Agreement Migration Gap</b></a></li>
+                        <li>LRC CLM Data Strategy Transition site walkthrough</li>
 
-                    </ul>
+                        <!-- Using standard hash link for native scrolling -->
 
-                    
+                        <li><a href="#challenge-1" class="text-gray-700 hover:text-gray-900 hover:underline">Key Challenges and Gaps: Deep dive into <b>1. Parent Agreement Migration Gap</b></a></li>
 
-                    <!-- Flexible spacer pushes the content below it (the video) to the bottom -->
+                    </ul>
 
-                    <div class="flex-grow"></div>
+                    
 
-                    
+                    <!-- Flexible spacer pushes the content below it (the video) to the bottom -->
 
-                    <!-- Video element for Day 2 recap -->
+                    <div class="flex-grow"></div>
 
-                    <div class="mt-4 pt-4 border-t border-gray-200">
+                    
 
-                        <p class="text-base font-semibold text-green-600 mb-2">Day 2 Recap Video (Watch Here):</p>
+                    <!-- Video element for Day 2 recap -->
 
-                        <!-- Iframe for responsive Google Drive Video Embed -->
+                    <div class="mt-4 pt-4 border-t border-gray-200">
 
-                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <p class="text-base font-semibold text-green-600 mb-2">Day 2 Recap Video (Watch Here):</p>
 
-                            <iframe
+                        <!-- Iframe for responsive Google Drive Video Embed -->
 
-                                src="https://drive.google.com/file/d/1qW8HyssDK-uXC2qAP40YB1tKRvX94h3S/preview"
+                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
 
-                                frameborder="0"
+                            <iframe
 
-                                allow="autoplay; encrypted-media"
+                                src="https://drive.google.com/file/d/1qW8HyssDK-uXC2qAP40YB1tKRvX94h3S/preview"
 
-                                allowfullscreen
+                                frameborder="0"
 
-                                class="absolute top-0 left-0 w-full h-full"
+                                allow="autoplay; encrypted-media"
 
-                            ></iframe>
+                                allowfullscreen
 
-                        </div>
+                                class="absolute top-0 left-0 w-full h-full"
 
-                    </div>
+                            ></iframe>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Day 3 Agenda (From Transcript) -->
 
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 3: Data Hygiene & Mapping Deep Dive</h3>
+                <!-- Day 3 Agenda (From Transcript) -->
 
-                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                        <li>Focus on <b>Challenge 2 (Data Hygiene)</b> and <b>Challenge 4 (System Mapping)</b>.</li>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 3: Data Hygiene & Mapping Deep Dive</h3>
 
-                        <li>Review <b>Parent Agreement Gap</b> resolution steps (Tableau walkthrough).</li>
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
 
-                        <li>Deep dive into <b>Fallback Usage & Segmentation</b> challenges (Challenge 4).</li>
+                        <li>Focus on <b>Challenge 2 (Data Hygiene)</b> and <b>Challenge 4 (System Mapping)</b>.</li>
 
-                        <li>Discussing <b>LoL & ARR</b> integrity issues (Challenge 2).</li>
+                        <li>Review <b>Parent Agreement Gap</b> resolution steps (Tableau walkthrough).</li>
 
-                        <li>Identify minor system/reporting improvements for LatentView Team.</li>
+                        <li>Deep dive into <b>Fallback Usage & Segmentation</b> challenges (Challenge 4).</li>
 
-                    </ul>
+                        <li>Discussing <b>LoL & ARR</b> integrity issues (Challenge 2).</li>
 
-                    
+                        <li>Identify minor system/reporting improvements for LatentView Team.</li>
 
-                    <!-- Flexible spacer -->
+                    </ul>
 
-                    <div class="flex-grow"></div>
+                    
 
-                    
+                    <!-- Flexible spacer -->
 
-                    <!-- Video element is now positioned at the bottom of the card -->
+                    <div class="flex-grow"></div>
 
-                    <div class="mt-4 pt-4 border-t border-gray-200">
+                    
 
-                        <p class="text-base font-semibold text-green-600 mb-2">Day 3 Recap Video (Watch Here):</p>
+                    <!-- Video element is now positioned at the bottom of the card -->
 
-                        <!-- Iframe for responsive Google Drive Video Embed (NEW VIDEO SRC) -->
+                    <div class="mt-4 pt-4 border-t border-gray-200">
 
-                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+                        <p class="text-base font-semibold text-green-600 mb-2">Day 3 Recap Video (Watch Here):</p>
 
-                            <iframe
+                        <!-- Iframe for responsive Google Drive Video Embed (NEW VIDEO SRC) -->
 
-                                src="https://drive.google.com/file/d/1AcY2xDaJTkOe26UdvHa_J-2E30lta3sg/preview"
+                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
 
-                                frameborder="0"
+                            <iframe
 
-                                allow="autoplay; encrypted-media"
+                                src="https://drive.google.com/file/d/1AcY2xDaJTkOe26UdvHa_J-2E30lta3sg/preview"
 
-                                allowfullscreen
+                                frameborder="0"
 
-                                class="absolute top-0 left-0 w-full h-full"
+                                allow="autoplay; encrypted-media"
 
-                            ></iframe>
+                                allowfullscreen
 
-                        </div>
+                                class="absolute top-0 left-0 w-full h-full"
 
-                    </div>
+                            ></iframe>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-            </div>
 
-            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-            <div class="mt-8 text-right">
+            </div>
 
-                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                    &uarr; Back to Top
+            <div class="mt-8 text-right">
 
-                </a>
+                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-            </div>
+                    &uarr; Back to Top
 
-        </section>
+                </a>
 
+            </div>
 
+        </section>
 
-        <!-- Section: Core Challenges (Toggling Tiles) -->
 
-        <section id="challenges" class="py-10">
 
-            <!-- HEADER UPDATED TO 8 KEY CHALLENGES -->
+        <!-- Section: Core Challenges (Toggling Tiles) -->
 
-            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">8 Key Challenges & Gaps</h2>
+        <section id="challenges" class="py-10">
 
-            <p class="text-lg mb-6 text-gray-600">These tiles detail the key challenges and gaps. Resolution Notes are currently available for Challenge 1, 2, 3, and 4.</p>
+            <!-- HEADER UPDATED TO 8 KEY CHALLENGES -->
 
-            <!-- Enforced equal height on the grid rows -->
+            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">8 Key Challenges & Gaps</h2>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
+            <p class="text-lg mb-6 text-gray-600">These tiles detail the key challenges and gaps. Resolution Notes are currently available for Challenge 1, 2, 3, and 4.</p>
 
+            <!-- Enforced equal height on the grid rows -->
 
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
 
-                <!-- Tile 1: Parent Agreement Migration Gap (HAS NOTES/BUTTON) -->
 
-                <div class="flex h-full">
 
-                    <div id="challenge-1" class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 1: Parent Agreement Migration Gap (HAS NOTES/BUTTON) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">1. Parent Agreement Migration Gap</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div id="challenge-1" class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            A large volume of parent agreements (including <b>SSAs, amendments, and order forms</b>) are not in Ironclad. This impacts crucial reporting. Identifying active/inactive agreements is essential. Remediation efforts will be guided by analyzing the data in the <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="procore-text-orange font-bold hover:underline">All Opportunities</a> dashboard.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">1. Parent Agreement Migration Gap</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Contract & Data Integrity</span>
+                            A large volume of parent agreements (including <b>SSAs, amendments, and order forms</b>) are not in Ironclad. This impacts crucial reporting. Identifying active/inactive agreements is essential. Remediation efforts will be guided by analyzing the data in the <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="procore-text-orange font-bold hover:underline">All Opportunities</a> dashboard.
 
-                        
+                        </p>
 
-                        <!-- TOGGLE BUTTON -->
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Contract & Data Integrity</span>
 
-                        <button onclick="toggleResolution(1)" id="button-1" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        
 
-                            Show Resolution/Examples
+                        <!-- TOGGLE BUTTON -->
 
-                        </button>
+                        <button onclick="toggleResolution(1)" id="button-1" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
+                            Show Resolution/Examples
 
+                        </button>
 
-                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                        <div id="resolution-1" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution Notes</h4>
+                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                            <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                        <div id="resolution-1" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                                <li><b>Data Filtering:</b> Leveraging the <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="procore-text-orange font-bold hover:underline">All Opportunities</a> dashboard in Tableau, apply filters: Opportunity Record Type = New Customer Sales Process, Renewal Process; Opportunity State = Closed Won; Opportunities Closed Start Date = 1/1/2022; Opportunities Closed End Date = Today's Date.</li>
+                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution Notes</h4>
 
-                                <li><b>Gap Identification:</b> Review Opportunity Detail. Where the workflow ID is <b>null</b>, the agreement is missing in Ironclad (or the workflow was manually remediated).</li>
+                            <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
 
-                                <li><b>Remediation Next Steps:</b> Download the Opportunity Detail into a Google worksheet and sort/filter on Service End Date to identify which agreements are currently active. All source agreements are available in SFDC within the Customer Opportunities section.</li>
+                                <li><b>Data Filtering:</b> Leveraging the <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="procore-text-orange font-bold hover:underline">All Opportunities</a> dashboard in Tableau, apply filters: Opportunity Record Type = New Customer Sales Process, Renewal Process; Opportunity State = Closed Won; Opportunities Closed Start Date = 1/1/2022; Opportunities Closed End Date = Today's Date.</li>
 
-                                <li><b>System Dependency:</b> Work with Emily See and the GTM Commercial COE to upload agreements into Ironclad. This requires a mini-workflow in Ironclad built to associate each new imported deal with an Ironclad workflow ID for reporting purposes.</li>
+                                <li><b>Gap Identification:</b> Review Opportunity Detail. Where the workflow ID is <b>null</b>, the agreement is missing in Ironclad (or the workflow was manually remediated).</li>
 
-                            </ul>
+                                <li><b>Remediation Next Steps:</b> Download the Opportunity Detail into a Google worksheet and sort/filter on Service End Date to identify which agreements are currently active. All source agreements are available in SFDC within the Customer Opportunities section.</li>
 
-                        </div>
+                                <li><b>System Dependency:</b> Work with Emily See and the GTM Commercial COE to upload agreements into Ironclad. This requires a mini-workflow in Ironclad built to associate each new imported deal with an Ironclad workflow ID for reporting purposes.</li>
 
-                    </div>
+                            </ul>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 2: Data Hygiene and Remediation -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 2: Data Hygiene and Remediation -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">2. Data Hygiene and Remediation</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            We face significant data hygiene issues, requiring remediation and clarification on <b>SOP (Standard Operating Procedure)</b> for data flow from deals into Ironclad. We also need a better understanding of the types of data we need to capture that will provide the common insights that our <b>Commercial Legal, Corporate Legal, and other legal functions</b> require for their reporting. This also implicates the work that we're requiring from our Elevate archiving team.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">2. Data Hygiene and Remediation</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Data & Process</span>
+                            We face significant data hygiene issues, requiring remediation and clarification on <b>SOP (Standard Operating Procedure)</b> for data flow from deals into Ironclad. We also need a better understanding of the types of data we need to capture that will provide the common insights that our <b>Commercial Legal, Corporate Legal, and other legal functions</b> require for their reporting. This also implicates the work that we're requiring from our Elevate archiving team.
 
-                        
+                        </p>
 
-                        <!-- TOGGLE BUTTON FOR CHALLENGE 2 -->
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Data & Process</span>
 
-                        <button onclick="toggleResolution(2)" id="button-2" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        
 
-                            Show Resolution/Examples
+                        <!-- TOGGLE BUTTON FOR CHALLENGE 2 -->
 
-                        </button>
+                        <button onclick="toggleResolution(2)" id="button-2" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
+                            Show Resolution/Examples
 
+                        </button>
 
-                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                        <div id="resolution-2" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Examples: LoL & ARR Integrity</h4>
+                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                            <p class="text-sm text-gray-700 mb-2">The ability to reliably report on critical financial and compliance data is compromised due to historical data gaps and field ambiguity:</p>
+                        <div id="resolution-2" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <ul class="space-y-1 text-sm text-gray-700 list-disc pl-5">
+                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Examples: LoL & ARR Integrity</h4>
 
-                                <!-- UPDATED BOLDING -->
+                            <p class="text-sm text-gray-700 mb-2">The ability to reliably report on critical financial and compliance data is compromised due to historical data gaps and field ambiguity:</p>
 
-                                <li><b>LoL & SLA Credits:</b> Reporting on <b>Limitation of Liability (LoL)</b> and <b>SLA Credit liability</b> is currently unreliable. Data was not consistently captured or backfilled when new terms were identified, impacting Corporate/Securities and M&A due diligence.</li>
+                            <ul class="space-y-1 text-sm text-gray-700 list-disc pl-5">
 
-                                <!-- UPDATED ARR FIELD AMBIGUITY CONTENT -->
+                                <!-- UPDATED BOLDING -->
 
-                                <li><b>ARR Field Ambiguity:</b> Accurate financial reporting is hampered by several different <b>Annual Recurring Revenue (ARR)</b> fields. We have honed in on the correct field, but this doesn't solve for scaling, should any process changes occur upstream. The other issue is how we capture information consistently across a <b>contract family</b> so that we know which record in Ironclad contains the most-up-to-date and accurate data.</li>
+                                <li><b>LoL & SLA Credits:</b> Reporting on <b>Limitation of Liability (LoL)</b> and <b>SLA Credit liability</b> is currently unreliable. Data was not consistently captured or backfilled when new terms were identified, impacting Corporate/Securities and M&A due diligence.</li>
 
-                                <li><b>Process Fix:</b> Future SOP must be updated to ensure consistent data entry. Past data requires targeted remediation (e.g., backfilling high-ARR agreements) potentially using tools like Knowable for bulk data extraction.</li>
+                                <!-- UPDATED ARR FIELD AMBIGUITY CONTENT -->
 
-                            </ul>
+                                <li><b>ARR Field Ambiguity:</b> Accurate financial reporting is hampered by several different <b>Annual Recurring Revenue (ARR)</b> fields. We have honed in on the correct field, but this doesn't solve for scaling, should any process changes occur upstream. The other issue is how we capture information consistently across a <b>contract family</b> so that we know which record in Ironclad contains the most-up-to-date and accurate data.</li>
 
-                        </div>
+                                <li><b>Process Fix:</b> Future SOP must be updated to ensure consistent data entry. Past data requires targeted remediation (e.g., backfilling high-ARR agreements) potentially using tools like Knowable for bulk data extraction.</li>
 
-                    </div>
+                            </ul>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 3: Commercial Process & SOP Issues (NOW HAS NOTES/BUTTON) -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 3: Commercial Process & SOP Issues (NOW HAS NOTES/BUTTON) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">3. Commercial Process & SOP Issues</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            Data is revealing process inconsistencies upstream within our Commercial Go-To-Market team. These inconsistencies often necessitate <b>SQL workarounds</b> rather than fixing the upstream process, which is the long-term goal. We need a mechanism to up-level these findings to GTM Enablement.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">3. Commercial Process & SOP Issues</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Process & Enablement</span>
+                            Data is revealing process inconsistencies upstream within our Commercial Go-To-Market team. These inconsistencies often necessitate <b>SQL workarounds</b> rather than fixing the upstream process, which is the long-term goal. We need a mechanism to up-level these findings to GTM Enablement.
 
+                        </p>
 
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Process & Enablement</span>
 
-                        <!-- TOGGLE BUTTON -->
 
-                        <button onclick="toggleResolution(3)" id="button-3" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
-                            Show Resolution/Examples
+                        <!-- TOGGLE BUTTON -->
 
-                        </button>
+                        <button onclick="toggleResolution(3)" id="button-3" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
+                            Show Resolution/Examples
 
+                        </button>
 
-                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                        <div id="resolution-3" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Partnerships</h4>
+                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                            <p class="text-sm text-gray-700 mb-2">The goal is to eliminate data workarounds by fixing commercial processes upstream. Key partner is <b>Rebecca Preston (GTM Enablement)</b>:</p>
+                        <div id="resolution-3" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Partnerships</h4>
 
-                                <li><b>Data-Driven Process Improvement:</b> The transition team (Legal Ops/LatentView) will identify data anomalies caused by GTM processes (e.g., inconsistent field usage, incorrect status updates).</li>
+                            <p class="text-sm text-gray-700 mb-2">The goal is to eliminate data workarounds by fixing commercial processes upstream. Key partner is <b>Rebecca Preston (GTM Enablement)</b>:</p>
 
-                                <li><b>Liaison Role:</b> Rebecca Preston will liaise between the data teams and the GTM commercial team to translate data findings into actionable training and process changes.</li>
+                            <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
 
-                                <li><b>Impact:</b> This proactive approach ensures data integrity is fixed at the source, moving beyond temporary <b>SQL fixes</b> and reducing technical debt long-term.</li>
+                                <li><b>Data-Driven Process Improvement:</b> The transition team (Legal Ops/LatentView) will identify data anomalies caused by GTM processes (e.g., inconsistent field usage, incorrect status updates).</li>
 
-                            </ul>
+                                <li><b>Liaison Role:</b> Rebecca Preston will liaise between the data teams and the GTM commercial team to translate data findings into actionable training and process changes.</li>
 
-                        </div>
+                                <li><b>Impact:</b> This proactive approach ensures data integrity is fixed at the source, moving beyond temporary <b>SQL fixes</b> and reducing technical debt long-term.</li>
 
-                    </div>
+                            </ul>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 4: System Integration & Mapping -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 4: System Integration & Mapping -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">4. System Integration & Mapping</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            We've identified system issues, particularly related to information mapping between Salesforce and Ironclad (as well as Ironclad itself). This issue, for example, prevents agreements not tied to an Ironclad workflow (e.g., historical imports) from being reported in Tableau and Snowflake, requiring a system workaround.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">4. System Integration & Mapping</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: System & Integration</span>
+                            We've identified system issues, particularly related to information mapping between Salesforce and Ironclad (as well as Ironclad itself). This issue, for example, prevents agreements not tied to an Ironclad workflow (e.g., historical imports) from being reported in Tableau and Snowflake, requiring a system workaround.
 
+                        </p>
 
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: System & Integration</span>
 
-                        <!-- TOGGLE BUTTON -->
 
-                        <button onclick="toggleResolution(4)" id="button-4" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
-                            Show Resolution/Examples
+                        <!-- TOGGLE BUTTON -->
 
-                        </button>
+                        <button onclick="toggleResolution(4)" id="button-4" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
 
+                            Show Resolution/Examples
 
+                        </button>
 
-                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                        <div id="resolution-4" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Examples: Fallback Usage & Segmentation</h4>
+                        <!-- RESOLUTION NOTES (Hidden by default) -->
 
-                            <p class="text-sm text-gray-700 mb-2">The issue prevents accurate reporting on <b>Fallback Usage</b> tied to the correct <b>customer segment</b>:</p>
+                        <div id="resolution-4" class="mt-4 pt-4 border-t border-gray-200 hidden">
 
-                            <ul class="space-y-1 text-sm text-gray-700 list-disc pl-5">
+                            <h4 class="text-lg font-bold procore-text-orange mb-2">Resolution and Examples: Fallback Usage & Segmentation</h4>
 
-                                <li><b>Mapping Error:</b> Fallback usage data pulled from Ironclad maps to the incorrect <b>Seller Segment</b>, not the required <b>Customer Segment</b> (the source of truth used in Tableau opportunity dashboards) due to a flaw in the SFDC-Ironclad segment mapping.</li>
+                            <p class="text-sm text-gray-700 mb-2">The issue prevents accurate reporting on <b>Fallback Usage</b> tied to the correct <b>customer segment</b>:</p>
 
-                                <li><b>Workaround:</b> Resolution currently requires a manual process: pulling static reports from both Ironclad and Tableau and performing a <b>VLOOKUP</b> to correlate fallback usage with the correct Customer Segment data.</li>
+                            <ul class="space-y-1 text-sm text-gray-700 list-disc pl-5">
 
-                                <li><b>Long-Term Fix:</b> Requires either fixing the SFDC-Ironclad segment mapping or building a new Tableau report to marry the data from both systems via a unique identifier.
+                                <li><b>Mapping Error:</b> Fallback usage data pulled from Ironclad maps to the incorrect <b>Seller Segment</b>, not the required <b>Customer Segment</b> (the source of truth used in Tableau opportunity dashboards) due to a flaw in the SFDC-Ironclad segment mapping.</li>
 
-                                    <!-- Nested list for sub-sub-bullet -->
+                                <li><b>Workaround:</b> Resolution currently requires a manual process: pulling static reports from both Ironclad and Tableau and performing a <b>VLOOKUP</b> to correlate fallback usage with the correct Customer Segment data.</li>
 
-                                    <ul class="list-disc pl-5 pt-1">
+                                <li><b>Long-Term Fix:</b> Requires either fixing the SFDC-Ironclad segment mapping or building a new Tableau report to marry the data from both systems via a unique identifier.
 
-                                        <li>Recommendation is to report on <b>fallback usage volume trends</b> as the key success metrics, focusing on the post-sales empowerment deal model push.</li>
+                                    <!-- Nested list for sub-sub-bullet -->
 
-                                    </ul>
+                                    <ul class="list-disc pl-5 pt-1">
 
-                                </li>
+                                        <li>Recommendation is to report on <b>fallback usage volume trends</b> as the key success metrics, focusing on the post-sales empowerment deal model push.</li>
 
-                            </ul>
+                                    </ul>
 
-                        </div>
+                                </li>
 
-                    </div>
+                            </ul>
 
-                </div>
+                        </div>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 5: Consolidated Data Library (Data Governance & Consistency) -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 5: Consolidated Data Library (Data Governance & Consistency) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">5. Consolidated Data Library</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            Need to establish a single, reliable source for data definitions and fields to ensure consistency. This addresses which of the <b>multiple Salesforce fields</b> (e.g., Region) is the source of truth, and requires a blueprint of Procore's core agreement structure.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">5. Consolidated Data Library</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Data Governance & Consistency</span>
+                            Need to establish a single, reliable source for data definitions and fields to ensure consistency. This addresses which of the <b>multiple Salesforce fields</b> (e.g., Region) is the source of truth, and requires a blueprint of Procore's core agreement structure.
 
-                    </div>
+                        </p>
 
-                </div>
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Data Governance & Consistency</span>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 6 (SWAPPED from 8): Ticketing Template & Triage (Workflow & Efficiency) -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 6 (SWAPPED from 8): Ticketing Template & Triage (Workflow & Efficiency) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">6. Ticketing Template & Triage</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            A lack of a formalized template and process for gathering business requirements has resulted in ambiguous, anecdotal tickets. The new template is essential for efficient triage, prioritization, and execution.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">6. Ticketing Template & Triage</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Workflow & Efficiency</span>
+                            A lack of a formalized template and process for gathering business requirements has resulted in ambiguous, anecdotal tickets. The new template is essential for efficient triage, prioritization, and execution.
 
-                    </div>
+                        </p>
 
-                </div>
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Workflow & Efficiency</span>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 7: Revolving BI Door & SQL Cleanup (NO NOTES/BUTTON) -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 7: Revolving BI Door & SQL Cleanup (NO NOTES/BUTTON) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">7. Revolving BI Door & SQL Cleanup</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            High BI Analyst turnover (6 people in 2 years) led to fit-and-start data work, making SQL/model cleanup a major uphill battle. This includes establishing a process for identifying <b>new field additions</b> and assessing their impact on existing SQL models.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">7. Revolving BI Door & SQL Cleanup</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Technical Debt & Stability</span>
+                            High BI Analyst turnover (6 people in 2 years) led to fit-and-start data work, making SQL/model cleanup a major uphill battle. This includes establishing a process for identifying <b>new field additions</b> and assessing their impact on existing SQL models.
 
-                    </div>
+                        </p>
 
-                </div>
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Technical Debt & Stability</span>
 
+                    </div>
 
+                </div>
 
-                <!-- Tile 8 (SWAPPED from 6): Time Zone & UAT Bandwidth (Model & Bandwidth) -->
 
-                <div class="flex h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                <!-- Tile 8 (SWAPPED from 6): Time Zone & UAT Bandwidth (Model & Bandwidth) -->
 
-                        <h3 class="text-xl font-bold mb-3 text-gray-900">8. Time Zone & UAT Bandwidth</h3>
+                <div class="flex h-full">
 
-                        <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
-                            The IST/PST time zone difference, compounded by bandwidth limitations (especially during UAT), has slowed the work lifecycle from days to weeks. The new time-zone-aligned model is designed to drastically reduce this gap.
+                        <h3 class="text-xl font-bold mb-3 text-gray-900">8. Time Zone & UAT Bandwidth</h3>
 
-                        </p>
+                        <p class="text-gray-600 flex-grow">
 
-                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Model & Bandwidth</span>
+                            The IST/PST time zone difference, compounded by bandwidth limitations (especially during UAT), has slowed the work lifecycle from days to weeks. The new time-zone-aligned model is designed to drastically reduce this gap.
 
-                    </div>
+                        </p>
 
-                </div>
+                        <span class="mt-4 text-sm font-semibold procore-text-orange">Gap Type: Model & Bandwidth</span>
 
+                    </div>
 
+                </div>
 
-                <!-- REMOVED Tile 9: Procurement Agreements Data Gap (Data Integrity & Scope) -->
 
 
+                <!-- REMOVED Tile 9: Procurement Agreements Data Gap (Data Integrity & Scope) -->
 
-            </div>
 
-            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-            <div class="mt-8 text-right">
+            </div>
 
-                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                    &uarr; Back to Top
+            <div class="mt-8 text-right">
 
-                </a>
+                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-            </div>
+                    &uarr; Back to Top
 
-        </section>
+                </a>
 
+            </div>
 
+        </section>
 
-        <!-- Section: Roadmap & The Way Forward -->
 
-        <section id="roadmap" class="py-10 bg-gray-100 rounded-xl">
 
-            <div class="p-6">
+        <!-- Section: Roadmap & The Way Forward -->
 
-                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Roadmap & Opportunities</h2>
+        <section id="roadmap" class="py-10 bg-gray-100 rounded-xl">
 
-                <p class="text-lg mb-8 text-gray-600">
+            <div class="p-6">
 
-                    The transition is perfectly timed to tackle known challenges and capitalize on significant AI-driven opportunities, changing how we deliver analytics and support the business.
+                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Roadmap & Opportunities</h2>
 
-                </p>
+                <p class="text-lg mb-8 text-gray-600">
 
+                    The transition is perfectly timed to tackle known challenges and capitalize on significant AI-driven opportunities, changing how we deliver analytics and support the business.
 
+                </p>
 
-                <div class="grid lg:grid-cols-2 gap-6">
 
-                    <!-- Column 1: Core Transition Steps (Phase 1) -->
 
-                    <div>
+                <div class="grid lg:grid-cols-2 gap-6">
 
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 1: Stabilization & Handover</h3>
+                    <!-- Column 1: Core Transition Steps (Phase 1) -->
 
-                            <!-- Start of Phase 1 Card Grid for equal height -->
+                    <div>
 
-                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 1: Stabilization & Handover</h3>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                            <!-- Start of Phase 1 Card Grid for equal height -->
 
-                                <b class="text-lg block mb-1">Roadmap Build-out & Review</b>
+                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
 
-                                <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Roadmap Build-out & Review</b>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                                <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
 
-                                <b class="text-lg block mb-1">Transition Document Review</b>
+                            </div>
 
-                                <p class="text-gray-600 flex-grow">Systematic review of challenges, current model, and proposed solutions to ensure full context transfer.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Transition Document Review</b>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                                <p class="text-gray-600 flex-grow">Systematic review of challenges, current model, and proposed solutions to ensure full context transfer.</p>
 
-                                <b class="text-lg block mb-1">Agreement Structure Blueprint</b>
+                            </div>
 
-                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Agreement Structure Blueprint</b>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling.</p>
 
-                                <b class="text-lg block mb-1">Current Ticket Triage</b>
+                            </div>
 
-                                <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Current Ticket Triage</b>
 
-                        </div>
+                                <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
 
-                        <!-- End of Phase 1 Card Grid -->
+                            </div>
 
-                    </div>
+                        </div>
 
+                        <!-- End of Phase 1 Card Grid -->
 
+                    </div>
 
-                    <!-- Column 2: AI & Analytics Transformation (Phase 2) -->
 
-                    <div>
 
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI-Powered Analytics</h3>
+                    <!-- Column 2: AI & Analytics Transformation (Phase 2) -->
 
-                        <!-- Start of Phase 2 Card Grid for equal height -->
+                    <div>
 
-                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI-Powered Analytics</h3>
 
-                            <!-- MOVED CARD: AI Template Overlay Build -->
+                        <!-- Start of Phase 2 Card Grid for equal height -->
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
 
-                                <b class="text-lg block mb-1">AI Template Overlay Build</b>
+                            <!-- MOVED CARD: AI Template Overlay Build -->
 
-                                <p class="text-gray-600 flex-grow">Implement the AI solution to instantly transform raw ticket descriptions into the new, standardized requirements template.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">AI Template Overlay Build</b>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                                <p class="text-gray-600 flex-grow">Implement the AI solution to instantly transform raw ticket descriptions into the new, standardized requirements template.</p>
 
-                                <b class="text-lg block mb-1">Data & Reporting Transformation</b>
+                            </div>
 
-                                <p class="text-gray-600 flex-grow">Implement a two-pronged AI strategy to move reporting from a multi-day build cycle to a natural language query, transforming analytics.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Data & Reporting Transformation</b>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                                <p class="text-gray-600 flex-grow">Implement a two-pronged AI strategy to move reporting from a multi-day build cycle to a natural language query, transforming analytics.</p>
 
-                                <b class="text-lg block mb-1">Knowledge Management & Portal</b>
+                            </div>
 
-                                <p class="text-gray-600 flex-grow">Establish clear communications, transparency, and a dedicated portal (Confluence site) to broadcast wins and share knowledge across the organization.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
 
-                            </div>
+                                <b class="text-lg block mb-1">Knowledge Management & Portal</b>
 
-                        </div>
+                                <p class="text-gray-600 flex-grow">Establish clear communications, transparency, and a dedicated portal (Confluence site) to broadcast wins and share knowledge across the organization.</p>
 
-                        <!-- End of Phase 2 Card Grid -->
+                            </div>
 
-                    </div>
+                        </div>
 
-                </div>
+                        <!-- End of Phase 2 Card Grid -->
 
-                
+                    </div>
 
-                <!-- NEW: Collapsible Draft Roadmap Container -->
+                </div>
 
-                <div class="mt-10 pt-8 border-t border-gray-300">
+                
 
-                    <h3 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-gray-400 pb-2 inline-block">CLM Draft Roadmap</h3>
+                <!-- NEW: Collapsible Draft Roadmap Container -->
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-indigo-200">
+                <div class="mt-10 pt-8 border-t border-gray-300">
 
-                        
+                    <h3 class="text-3xl font-bold mb-4 text-gray-900 border-b-2 border-gray-400 pb-2 inline-block">CLM Draft Roadmap</h3>
 
-                        <!-- Collapsible Header/Button -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-indigo-200">
 
-                        <button onclick="toggleRoadmap()" class="w-full text-left flex justify-between items-center p-3 font-bold text-lg text-indigo-800 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        
 
-                            <span>Click to View CLM Draft Roadmap Projects & Backlog (16 Items)</span>
+                        <!-- Collapsible Header/Button -->
 
-                            <svg id="roadmap-toggle-icon" class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <button onclick="toggleRoadmap()" class="w-full text-left flex justify-between items-center p-3 font-bold text-lg text-indigo-800 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
 
-                        </button>
+                            <span>Click to View CLM Draft Roadmap Projects & Backlog (16 Items)</span>
 
+                            <svg id="roadmap-toggle-icon" class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
 
+                        </button>
 
-                        <!-- Collapsible Content -->
 
-                        <div id="draft-roadmap-content" class="mt-4 hidden pt-4 border-t border-gray-200">
 
-                            <div id="main-roadmap-container" class="space-y-6">
+                        <!-- Collapsible Content -->
 
-                                <!-- System Lanes will be dynamically inserted here by JavaScript -->
+                        <div id="draft-roadmap-content" class="mt-4 hidden pt-4 border-t border-gray-200">
 
-                            </div>
+                            <div id="main-roadmap-container" class="space-y-6">
 
-                        </div>
+                                <!-- System Lanes will be dynamically inserted here by JavaScript -->
 
-                    </div>
+                            </div>
 
-                </div>
+                        </div>
 
-                
+                    </div>
 
-                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
+                </div>
 
-                <div class="mt-8 text-right">
+                
 
-                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                        &uarr; Back to Top
+                <div class="mt-8 text-right">
 
-                    </a>
+                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-                </div>
+                        &uarr; Back to Top
 
-            </div>
+                    </a>
 
-        </section>
+                </div>
 
-        
+            </div>
 
-        <!-- REMOVED Modal for Detailed View (#item-modal) -->
+        </section>
 
+        
 
+        <!-- Section: Key Reporting Dashboards -->
 
-        <!-- Section: Key Reporting Dashboards -->
+        <section id="dashboards" class="py-10">
 
-        <section id="dashboards" class="py-10">
+            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key Reporting Dashboards</h2>
 
-            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key Reporting Dashboards</h2>
+            <p class="text-lg mb-6 text-gray-600">These visualizations represent the current reporting environment and key metrics for GTM Legal performance.</p>
 
-            <p class="text-lg mb-6 text-gray-600">These visualizations represent the current reporting environment and key metrics for GTM Legal performance.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
 
 
+                <!-- Dashboard 1: Legal Opportunities (NOTE: These remain external links and are NOT modified) -->
 
-                <!-- Dashboard 1: Legal Opportunities (NOTE: These remain external links and are NOT modified) -->
+                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalOpportunities?:iid=1" target="_blank" class="block">
 
-                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalOpportunities?:iid=1" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Opportunities</h3>
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Opportunities</h3>
+                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                    </div>
 
-                    </div>
+                </a>
 
-                </a>
 
 
+                <!-- Dashboard 2: Legal Cases -->
 
-                <!-- Dashboard 2: Legal Cases -->
+                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalCases?:iid=1" target="_blank" class="block">
 
-                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalCases?:iid=1" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Cases</h3>
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Cases</h3>
+                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                    </div>
 
-                    </div>
+                </a>
 
-                </a>
 
 
+                <!-- Dashboard 3: All Opportunities -->
 
-                <!-- Dashboard 3: All Opportunities -->
+                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="block">
 
-                <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">All Opportunities</h3>
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">All Opportunities</h3>
+                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                    </div>
 
-                    </div>
+                </a>
 
-                </a>
 
 
+                <!-- Dashboard 4: Quarterly Deal Trends -->
 
-                <!-- Dashboard 4: Quarterly Deal Trends -->
+                <a href="https://data.procore-it.com/#/views/GTMQuarterlyReport/GTMQuarterlyReport?:iid=5" target="_blank" class="block">
 
-                <a href="https://data.procore-it.com/#/views/GTMQuarterlyReport/GTMQuarterlyReport?:iid=5" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Quarterly Deal Trends</h3>
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Quarterly Deal Trends</h3>
+                        <p class="text-sm text-gray-500 mb-3">GTMQuarterlyReport</p>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMQuarterlyReport</p>
+                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                    </div>
 
-                    </div>
+                </a>
 
-                </a>
 
 
+                <!-- Dashboard 5: Pipeline Management (Jira) -->
 
-                <!-- Dashboard 5: Pipeline Management (Jira) -->
+                <a href="https://procoretech.atlassian.net/jira/dashboards/21644" target="_blank" class="block">
 
-                <a href="https://procoretech.atlassian.net/jira/dashboards/21644" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Pipeline Management</h3>
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Pipeline Management</h3>
+                        <p class="text-sm text-gray-500 mb-3">Jira Dashboard (data-related tickets including SEDM success metrics)</p>
 
-                        <p class="text-sm text-gray-500 mb-3">Jira Dashboard (data-related tickets including SEDM success metrics)</p>
+                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                    </div>
 
-                    </div>
+                </a>
 
-                </a>
 
 
+            </div>
 
-            </div>
+            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
+            <div class="mt-8 text-right">
 
-            <div class="mt-8 text-right">
+                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+                    &uarr; Back to Top
 
-                    &uarr; Back to Top
+                </a>
 
-                </a>
+            </div>
 
-            </div>
+        </section>
 
-        </section>
 
 
+        <!-- Section: Essential Tools and Access -->
 
-        <!-- Section: Essential Tools and Access -->
+        <section id="tools" class="py-10 bg-gray-100 rounded-xl">
 
-        <section id="tools" class="py-10 bg-gray-100 rounded-xl">
+            <div class="p-6">
 
-            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Essential Tools & Access</h2>
 
-                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Essential Tools & Access</h2>
+                <p class="text-lg mb-6 text-gray-600">These are the critical systems and platforms required for data processing, analysis, and collaborative work.</p>
 
-                <p class="text-lg mb-6 text-gray-600">These are the critical systems and platforms required for data processing, analysis, and collaborative work.</p>
+                
 
-                
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 equal-height-grid">
 
-                <div class="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 equal-height-grid">
+                    
+                    <!-- Tool 1: Snowflake (Data Warehouse) -->
 
-                    
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center flex flex-col items-center h-full">
 
-                    <!-- Tool 1: Snowflake (Data Warehouse) -->
+                        <!-- Database Icon (Heroicons: Solid) -->
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 text-center flex flex-col items-center h-full">
+                        <svg class="w-8 h-8 text-blue-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM4 11a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM4 15a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z"/></svg>
 
-                        <!-- Database Icon (Heroicons: Solid) -->
+                        <b class="text-xl font-bold mb-1 text-gray-900">Snowflake</b>
 
-                        <svg class="w-8 h-8 text-blue-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM4 11a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM4 15a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z"/></svg>
+                        <p class="text-gray-600 flex-grow text-sm">Cloud Data Warehouse for source data ingestion and SQL querying.</p>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Snowflake</b>
+                    </div>
 
-                        <p class="text-gray-600 flex-grow text-sm">Cloud Data Warehouse for source data ingestion and SQL querying.</p>
 
-                    </div>
 
+                    <!-- Tool 2: Databricks (Data Engineering) -->
 
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500 text-center flex flex-col items-center h-full">
 
-                    <!-- Tool 2: Databricks (Data Engineering) -->
+                        <!-- Lightning Bolt Icon (Heroicons: Solid) -->
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500 text-center flex flex-col items-center h-full">
+                        <svg class="w-8 h-8 text-orange-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.832 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.832-1.573l7-10z" clip-rule="evenodd"></path></svg>
 
-                        <!-- Lightning Bolt Icon (Heroicons: Solid) -->
+                        <b class="text-xl font-bold mb-1 text-gray-900">Databricks</b>
 
-                        <svg class="w-8 h-8 text-orange-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.832 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.832-1.573l7-10z" clip-rule="evenodd"></path></svg>
+                        <p class="text-gray-600 flex-grow text-sm">Unified platform for data engineering, ML, and advanced ETL processes.</p>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Databricks</b>
+                    </div>
 
-                        <p class="text-gray-600 flex-grow text-sm">Unified platform for data engineering, ML, and advanced ETL processes.</p>
+                    
+                    <!-- Tool 3: Tableau (BI/Visualization) -->
 
-                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-500 text-center flex flex-col items-center h-full">
 
-                    
+                        <!-- Chart Bar Icon (Heroicons: Solid) -->
 
-                    <!-- Tool 3: Tableau (BI/Visualization) -->
+                        <svg class="w-8 h-8 text-purple-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 3a1 1 0 011-1h2a1 1 0 011 1v13a1 1 0 01-1 1h-2a1 1 0 01-1-1V3z"></path></svg>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-500 text-center flex flex-col items-center h-full">
+                        <b class="text-xl font-bold mb-1 text-gray-900">Tableau</b>
 
-                        <!-- Chart Bar Icon (Heroicons: Solid) -->
+                        <p class="text-gray-600 flex-grow text-sm">Primary BI tool for generating, hosting, and sharing legal and GTM data dashboards.</p>
 
-                        <svg class="w-8 h-8 text-purple-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 3a1 1 0 011-1h2a1 1 0 011 1v13a1 1 0 01-1 1h-2a1 1 0 01-1-1V3z"></path></svg>
+                    </div>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Tableau</b>
 
-                        <p class="text-gray-600 flex-grow text-sm">Primary BI tool for generating, hosting, and sharing legal and GTM data dashboards.</p>
 
-                    </div>
+                    <!-- Tool 4: SFDC (Source System) -->
 
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500 text-center flex flex-col items-center h-full">
 
+                        <!-- Cloud Icon (Heroicons: Solid) -->
 
-                    <!-- Tool 4: SFDC (Source System) -->
+                        <svg class="w-8 h-8 text-green-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M16 10H4C2.9 10 2 10.9 2 12V18C2 19.1 2.9 20 4 20H16C17.1 20 18 19.1 18 18V12C18 10.9 17.1 10 16 10Z" clip-rule="evenodd" fill-rule="evenodd"></path><path d="M9 4.293a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L10 6.414V14a1 1 0 11-2 0V6.414L6.707 8.707a1 1 0 01-1.414-1.414l3-3z"></path></svg>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500 text-center flex flex-col items-center h-full">
+                        <b class="text-xl font-bold mb-1 text-gray-900">SFDC (Salesforce)</b>
 
-                        <!-- Cloud Icon (Heroicons: Solid) -->
+                        <p class="text-gray-600 flex-grow text-sm">Primary source for opportunity, customer, and commercial data used in reporting models.</p>
 
-                        <svg class="w-8 h-8 text-green-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M16 10H4C2.9 10 2 10.9 2 12V18C2 19.1 2.9 20 4 20H16C17.1 20 18 19.1 18 18V12C18 10.9 17.1 10 16 10Z" clip-rule="evenodd" fill-rule="evenodd"></path><path d="M9 4.293a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L10 6.414V14a1 1 0 11-2 0V6.414L6.707 8.707a1 1 0 01-1.414-1.414l3-3z"></path></svg>
+                    </div>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">SFDC (Salesforce)</b>
 
-                        <p class="text-gray-600 flex-grow text-sm">Primary source for opportunity, customer, and commercial data used in reporting models.</p>
 
-                    </div>
+                    <!-- Tool 5: Ironclad (CLM) -->
 
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500 text-center flex flex-col items-center h-full">
 
+                        <!-- Document Check Icon (Heroicons: Solid) -->
 
-                    <!-- Tool 5: Ironclad (CLM) -->
+                        <svg class="w-8 h-8 text-red-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.293a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500 text-center flex flex-col items-center h-full">
+                        <b class="text-xl font-bold mb-1 text-gray-900">Ironclad</b>
 
-                        <!-- Document Check Icon (Heroicons: Solid) -->
+                        <p class="text-gray-600 flex-grow text-sm">The Contract Lifecycle Management (CLM) system, a primary data source for agreements and terms.</p>
 
-                        <svg class="w-8 h-8 text-red-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.293a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Ironclad</b>
+                    
+                    <!-- Tool 6: GitHub (Code Repository) -->
 
-                        <p class="text-gray-600 flex-grow text-sm">The Contract Lifecycle Management (CLM) system, a primary data source for agreements and terms.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-gray-700 text-center flex flex-col items-center h-full">
 
-                    </div>
+                        <!-- Code Icon (Heroicons: Solid) -->
 
-                    
+                        <svg class="w-8 h-8 text-gray-700 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.077 1.054L10.3 8.329l1.624 3.738a1 1 0 01-.077 1.054L8.711 17.65a1 1 0 01-1.895-.694L9.7 11.671 8.076 7.933a1 1 0 01.077-1.054l1.624-3.738a1 1 0 011.895.694z" clip-rule="evenodd"></path></svg>
 
-                    <!-- Tool 6: GitHub (Code Repository) -->
+                        <b class="text-xl font-bold mb-1 text-gray-900">GitHub</b>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-gray-700 text-center flex flex-col items-center h-full">
+                        <p class="text-gray-600 flex-grow text-sm">Code repository for data pipeline management, SQL models, and version control.</p>
 
-                        <!-- Code Icon (Heroicons: Solid) -->
+                    </div>
 
-                        <svg class="w-8 h-8 text-gray-700 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.077 1.054L10.3 8.329l1.624 3.738a1 1 0 01-.077 1.054L8.711 17.65a1 1 0 01-1.895-.694L9.7 11.671 8.076 7.933a1 1 0 01.077-1.054l1.624-3.738a1 1 0 011.895.694z" clip-rule="evenodd"></path></svg>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">GitHub</b>
 
-                        <p class="text-gray-600 flex-grow text-sm">Code repository for data pipeline management, SQL models, and version control.</p>
+                    <!-- Tool 7: Jira Service Desk (Ticketing) -->
 
-                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-500 text-center flex flex-col items-center h-full">
 
+                        <!-- Support/Headphones Icon (Heroicons: Solid) -->
 
+                        <svg class="w-8 h-8 text-teal-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-2-4a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
 
-                    <!-- Tool 7: Jira Service Desk (Ticketing) -->
+                        <b class="text-xl font-bold mb-1 text-gray-900">Jira Service Desk</b>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-500 text-center flex flex-col items-center h-full">
+                        <p class="text-gray-600 flex-grow text-sm">System for submitting, triaging, and tracking data requests and identified process issues.</p>
 
-                        <!-- Support/Headphones Icon (Heroicons: Solid) -->
+                    </div>
 
-                        <svg class="w-8 h-8 text-teal-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-2-4a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    
+                    <!-- Tool 8: Confluence (KM) -->
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Jira Service Desk</b>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500 text-center flex flex-col items-center h-full">
 
-                        <p class="text-gray-600 flex-grow text-sm">System for submitting, triaging, and tracking data requests and identified process issues.</p>
+                        <!-- Book Open Icon (Heroicons: Solid) -->
 
-                    </div>
+                        <svg class="w-8 h-8 text-yellow-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h2a1 1 0 001-1V5a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 001 1z"></path><path fill-rule="evenodd" d="M12 2a1 1 0 011 1v1h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h2V3a1 1 0 011-1h4zM4 6V5a1 1 0 011-1h2a1 1 0 011 1v1h4V5a1 1 0 011-1h2a1 1 0 011 1v1h1a1 1 0 011 1v7a1 1 0 01-1 1H4V7a1 1 0 011-1H4z" clip-rule="evenodd"></path></svg>
 
-                    
+                        <b class="text-xl font-bold mb-1 text-gray-900">Confluence</b>
 
-                    <!-- Tool 8: Confluence (KM) -->
+                        <p class="text-gray-600 flex-grow text-sm">Central knowledge management and documentation portal for the transition and team SOPs.</p>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500 text-center flex flex-col items-center h-full">
+                    </div>
 
-                        <!-- Book Open Icon (Heroicons: Solid) -->
 
-                        <svg class="w-8 h-8 text-yellow-500 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h2a1 1 0 001-1V5a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 001 1z"></path><path fill-rule="evenodd" d="M12 2a1 1 0 011 1v1h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h2V3a1 1 0 011-1h4zM4 6V5a1 1 0 011-1h2a1 1 0 011 1v1h4V5a1 1 0 011-1h2a1 1 0 011 1v1h1a1 1 0 011 1v7a1 1 0 01-1 1H4V7a1 1 0 011-1H4z" clip-rule="evenodd"></path></svg>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Confluence</b>
+                    <!-- Tool 9: Global Protect (VPN) -->
 
-                        <p class="text-gray-600 flex-grow text-sm">Central knowledge management and documentation portal for the transition and team SOPs.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-700 text-center flex flex-col items-center h-full">
 
-                    </div>
+                        <!-- Lock Closed Icon (Heroicons: Solid) -->
 
+                        <svg class="w-8 h-8 text-red-700 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2h2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2h2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
 
+                        <b class="text-xl font-bold mb-1 text-gray-900">Global Protect VPN</b>
 
-                    <!-- Tool 9: Global Protect (VPN) -->
+                        <p class="text-gray-600 flex-grow text-sm">Required security tool for remote access to internal data infrastructure (Snowflake, Databricks).</p>
 
-                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-700 text-center flex flex-col items-center h-full">
+                    </div>
 
-                        <!-- Lock Closed Icon (Heroicons: Solid) -->
+                </div>
 
-                        <svg class="w-8 h-8 text-red-700 mb-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2h2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2h2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
 
-                        <b class="text-xl font-bold mb-1 text-gray-900">Global Protect VPN</b>
 
-                        <p class="text-gray-600 flex-grow text-sm">Required security tool for remote access to internal data infrastructure (Snowflake, Databricks).</p>
+                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                    </div>
+                <div class="mt-8 text-right">
 
-                </div>
+                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
+                        &uarr; Back to Top
 
+                    </a>
 
-                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
+                </div>
 
-                <div class="mt-8 text-right">
+            </div>
 
-                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+        </section>
 
-                        &uarr; Back to Top
 
-                    </a>
 
-                </div>
+        <!-- NEW SECTION: Key CLM Resources (Ironclad) -->
 
-            </div>
+        <section id="ironclad-links" class="py-10">
 
-        </section>
+            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key CLM Resources (Ironclad)</h2>
 
+            <p class="text-lg mb-6 text-gray-600">Centralized list of essential documentation, dashboards, and operational tools related to the CLM system and data archiving.</p>
 
+            <!-- Grid for the new links, 4 columns on large screens for a compact feel -->
 
-        <!-- Section: Key Partners & Stakeholders -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 equal-height-grid">
 
-        <section id="team" class="py-10">
 
-            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key Partnerships & Support</h2>
 
-            <!-- Adjusted Grid: Now 5 columns on large screens to accommodate 10 cards evenly -->
+                <!-- Link 1: Ironclad Procore Governance Model -->
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 equal-height-grid">
+                <a href="https://docs.google.com/spreadsheets/d/1PfqI5qInA6hpG6jt0EWPX3OCRyM10vShwV4L0e7ClOw/edit?gid=1435500457#gid=1435500457" target="_blank" class="block">
 
-                
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                <!-- Partner 1: CLO -->
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Governance Model</h3>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet (Data Definitions)</p>
 
-                    <b class="text-xl mb-1 text-gray-900">Chief Legal Officer (CLO)</b>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                    <p class="text-gray-600 flex-grow">
+                    </div>
 
-                        Ben Singer is highly bullish on this team and instrumental in securing the resources needed for this evergreen support model.
+                </a>
 
-                    </p>
+                
 
-                </div>
+                <!-- Link 2: Ironclad Workflows -->
 
-                
+                <a href="https://app.smartsheet.com/sheets/448GGjQjgrrRj5h2pgc5xmqjFcmFw89V8JgXGHc1?view=grid" target="_blank" class="block">
 
-                <!-- Partner 2: Legal Operations (Kalyani & Vigi) -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Workflows</h3>
 
-                    <b class="text-xl mb-1 text-gray-900">Legal Operations (Kalyani & Vigi)</b>
+                        <p class="text-sm text-gray-500 mb-3">Smartsheet</p>
 
-                    <p class="text-gray-600 flex-grow">
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                        The core team responsible for driving the data strategy, transition, and long-term success of CLM reporting and AI initiatives.
+                    </div>
 
-                    </p>
+                </a>
 
-                </div>
 
 
+                <!-- Link 3: Elevate Archival Dashboard -->
 
-                <!-- Partner 3: LatentView & Core Team -->
+                <a href="https://app.smartsheet.com/sheets/448GGjQjgrrRj5h2pgc5xmqjFcmFw89V8JgXGHc1?view=grid" target="_blank" class="block">
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <b class="text-xl mb-1 text-gray-900">LatentView Team (Srija & Mano)</b>
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Elevate Archival Dashboard</h3>
 
-                    <p class="text-gray-600 flex-grow">
+                        <p class="text-sm text-gray-500 mb-3">Smartsheet</p>
 
-                        In-house experts and consulting groups providing critical BI expertise and support, essential for driving the new model forward.
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                    </p>
+                    </div>
 
-                </div>
+                </a>
 
 
 
-                <!-- Partner 4: Commercial COE Team -->
+                <!-- Link 4: Archive Cheatsheet (GTML) -->
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                <a href="https://app.smartsheet.com/sheets/9qRJgcX86rx58xcXVWPc9CxrGpXxgjq94CpQcQM1?view=grid" target="_blank" class="block">
 
-                    <b class="text-xl mb-1 text-gray-900">Commercial COE Team</b>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <p class="text-gray-600 flex-grow">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Archive Cheatsheet (GTML)</h3>
 
-                        Manages contract migration into Ironclad and drives enablement and process standardization for commercial go-to-market functions.
+                        <p class="text-sm text-gray-500 mb-3">Smartsheet</p>
 
-                    </p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                </div>
+                    </div>
 
+                </a>
 
 
-                <!-- Partner 5: Financial Reporting Team (NEW CUSTOMer) - Kept yellow border for differentiation as a 'customer' partner -->
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
+                <!-- Link 5: Archive Cheatsheet (DD) -->
 
-                    <b class="text-xl mb-1 text-gray-900">Financial Reporting Team (Customer)</b>
+                <a href="https://docs.google.com/spreadsheets/d/1Dupt2mCVuA63XZugkLdxnFY4EA9PGRuAvnAJQH0wjow/edit?gid=483741267#gid=483741267" target="_blank" class="block">
 
-                    <p class="text-gray-600 flex-grow">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                        A key end-customer who relies on accurate CLM data (via Deal Desk) to ensure Ironclad data integrity is maintained for financial reporting.
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Archive Cheatsheet (Deal Desk)</h3>
 
-                    </p>
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet</p>
 
-                </div>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                
+                    </div>
 
-                <!-- Partner 6: IT/DTS -->
+                </a>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-                    <b class="text-xl mb-1 text-gray-900">IT/DTS (Data Technology & Security)</b>
 
-                    <p class="text-gray-600 flex-grow">
+                <!-- Link 6: Ironclad Archiver Service Desk -->
 
-                        Our internal IT business partners who manage system enhancements, security, and support AI tooling implementations. Critical for creating the <b>Ironclad Admin touch/workflow</b>.
+                <a href="https://procoretech.atlassian.net/servicedesk/customer/portal/2227/group/2717/create/5441" target="_blank" class="block">
 
-                    </p>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                </div>
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Archiver Service Desk</h3>
 
+                        <p class="text-sm text-gray-500 mb-3">Jira Service Desk</p>
 
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                <!-- Partner 7: Luke Paris's Data Engineering Team -->
+                    </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                </a>
 
-                    <b class="text-xl mb-1 text-gray-900">Luke Paris's Data Engineering Team</b>
 
-                    <p class="text-gray-600 flex-grow">
 
-                        Key contacts for data infrastructure, managing tables in Snowflake and Databricks, and supporting the critical PR merge process. Contacts include: <b>Scott Murray</b> and <b>Shishir Tewari</b>.
+                <!-- Link 7: Ironclad Okta Groups -->
 
-                    </p>
+                <a href="https://procoretech.atlassian.net/wiki/spaces/ILS/pages/2792227261/Ironclad+Okta+Group+Mapping" target="_blank" class="block">
 
-                </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Okta Groups</h3>
 
+                        <p class="text-sm text-gray-500 mb-3">Confluence Page</p>
 
-                <!-- Partner 8: Rebecca Preston - GTM Enablement -->
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                    </div>
 
-                    <b class="text-xl mb-1 text-gray-900">Rebecca Preston - GTM Enablement</b>
+                </a>
 
-                    <p class="text-gray-600 flex-grow">
 
-                        Owns the commercial GTM training and enablement strategy, serving as the essential partner for fixing upstream process and SOP gaps identified by data. <b>The point of contact for process changes.</b>
 
-                    </p>
+                <!-- Link 8: Ironclad Workflow Contract Templates -->
 
-                </div>
+                <a href="https://drive.google.com/drive/folders/18WQr2PKetElN7ho6LAwlM6kt39ecusJA" target="_blank" class="block">
 
-                
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                <!-- Partner 9: Elevate Archiving Team -->
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Contract Templates Folder</h3>
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
+                        <p class="text-sm text-gray-500 mb-3">Google Drive</p>
 
-                    <b class="text-xl mb-1 text-gray-900">Elevate Archiving Team</b>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                    <p class="text-gray-600 flex-grow">
+                    </div>
 
-                        Handles essential document archiving processes, ensuring long-term data accessibility and compliance for CLM agreements. Members: <b>Guneet</b> and <b>Salang</b>.
+                </a>
 
-                    </p>
 
-                </div>
 
-                
+                <!-- Link 9: WFD Repository Properties -->
 
-                <!-- Partner 10: Deal Desk (NEW CUSTOMER) - Kept yellow border for differentiation as a 'customer' partner -->
+                <a href="https://docs.google.com/spreadsheets/d/1T3r4KzrNGeLjYtfTHmP0Fy0oc4kYsZCn6HvhUdsR4Dk/edit?gid=1678746741#gid=1678746741" target="_blank" class="block">
 
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                    <b class="text-xl mb-1 text-gray-900">Deal Desk (Customer)</b>
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">WFD Repository Properties</h3>
 
-                    <p class="text-gray-600 flex-grow">
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet (Data Fields)</p>
 
-                        A key consumer of CLM data. Historical process gaps in this team led to data remediation efforts required by Legal Operations to satisfy financial reporting requirements.
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                    </p>
+                    </div>
 
-                </div>
+                </a>
 
 
 
-            </div>
+                <!-- Link 10: Unpublished Workflow Properties -->
 
-            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
+                <a href="https://docs.google.com/spreadsheets/d/1r-ZPsWnRpQEB8SlSO3bqcFIBZbhCOtu_omqXO76ZLYw/edit?gid=752729210#gid=752729210" target="_blank" class="block">
 
-            <div class="mt-8 text-right">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Unpublished Workflow Properties</h3>
 
-                    &uarr; Back to Top
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet (Data Fields)</p>
 
-                </a>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-            </div>
+                    </div>
 
-        </section>
+                </a>
 
 
 
-        <!-- Section: Key Actions (Now at the bottom) -->
+                <!-- Link 11: Ironclad on Confluence -->
 
-        <section id="actions" class="py-10">
+                <a href="https://procoretech.atlassian.net/wiki/search?text=ironclad" target="_blank" class="block">
 
-            <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-yellow-500">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
-                <h2 class="text-3xl font-bold mb-4 procore-text-orange border-b-2 procore-border-orange pb-2 inline-block">Immediate Key Actions</h2>
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Confluence Search</h3>
 
-                <p class="text-lg mb-6 text-gray-600">
+                        <p class="text-sm text-gray-500 mb-3">Confluence Search Result</p>
 
-                    These are critical setup items to ensure the transition team has the necessary access to begin work immediately.
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
-                </p>
+                    </div>
 
-                <ul class="space-y-3 text-lg">
+                </a>
 
-                    <li class="flex items-center text-gray-800">
 
-                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-                        Access to Tableau for all team members (visualizations and dashboards).
+            </div>
 
-                    </li>
 
-                    <li class="flex items-center text-gray-800">
 
-                        <!-- UPDATED ICON for 'Done' item for better consistency -->
+            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                        <svg class="w-6 h-6 mr-3 text-green-500 opacity-60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="mt-8 text-right">
 
-                        Access to Confluence for all team members (documentation and knowledge management portal) (Done).
+                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-                    </li>
+                    &uarr; Back to Top
 
-                    <li class="flex items-center text-gray-800">
+                </a>
 
-                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
 
-                        Access to JIRA dashboard for all team members (for task management and tracking).
+        </section>
 
-                    </li>
 
-                    <li class="flex items-center text-gray-800">
 
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <!-- Section: Key Partners & Stakeholders -->
 
-                        Daily site update (responsible: Dan).
+        <section id="team" class="py-10">
 
-                    </li>
+            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key Partnerships & Support</h2>
 
-                    <!-- UPDATED: Confirmed action item is correct and important for cross-reference -->
+            <!-- Adjusted Grid: Now 5 columns on large screens to accommodate 10 cards evenly -->
 
-                    <li class="flex items-center text-gray-800">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 equal-height-grid">
 
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                
 
-                        Add Opportunity Record Name field to the Tableau Opportunity Detail for easier cross-reference/research.
+                <!-- Partner 1: CLO -->
 
-                    </li>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-                    <!-- NEW ACTION ITEM ADDED -->
+                    <b class="text-xl mb-1 text-gray-900">Chief Legal Officer (CLO)</b>
 
-                    <li class="flex items-center text-gray-800">
+                    <p class="text-gray-600 flex-grow">
 
-                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Ben Singer is highly bullish on this team and instrumental in securing the resources needed for this evergreen support model.
 
-                        Dan to identify SFDC data ownership.
+                    </p>
 
-                    </li>
+                </div>
 
-                </ul>
+                
 
-                
+                <!-- Partner 2: Legal Operations (Kalyani & Vigi) -->
 
-                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-                <div class="mt-6 pt-4 border-t border-gray-200 text-right">
+                    <b class="text-xl mb-1 text-gray-900">Legal Operations (Kalyani & Vigi)</b>
 
-                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
+                    <p class="text-gray-600 flex-grow">
 
-                        &uarr; Back to Top
+                        The core team responsible for driving the data strategy, transition, and long-term success of CLM reporting and AI initiatives.
 
-                    </a>
+                    </p>
 
-                </div>
+                </div>
 
-            </div>
 
-        </section>
 
+                <!-- Partner 3: LatentView & Core Team -->
 
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-    </main>
+                    <b class="text-xl mb-1 text-gray-900">LatentView Team (Srija & Mano)</b>
 
+                    <p class="text-gray-600 flex-grow">
 
+                        In-house experts and consulting groups providing critical BI expertise and support, essential for driving the new model forward.
 
-    <!-- Footer -->
+                    </p>
 
-    <footer class="procore-bg text-white py-6 mt-10">
+                </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm opacity-80">
 
-            LRC CLM Data Strategy Site. Last Updated: October 7, 2025.
 
-        </div>
+                <!-- Partner 4: Commercial COE Team -->
 
-    </footer>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
+                    <b class="text-xl mb-1 text-gray-900">Commercial COE Team</b>
 
+                    <p class="text-gray-600 flex-grow">
 
-    <!-- JavaScript for resolution toggle and smooth scrolling -->
+                        Manages contract migration into Ironclad and drives enablement and process standardization for commercial go-to-market functions.
 
-    <script>
+                    </p>
 
-        console.log("Interactive site loaded. Custom JavaScript smooth scrolling enabled.");
+                </div>
 
-        
 
-        /**
 
-         * Custom handler to force smooth scrolling for hash links and prevent page reload/redirect.
+                <!-- Partner 5: Financial Reporting Team (NEW CUSTOMer) - Kept yellow border for differentiation as a 'customer' partner -->
 
-         */
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
 
-        document.addEventListener('DOMContentLoaded', () => {
+                    <b class="text-xl mb-1 text-gray-900">Financial Reporting Team (Customer)</b>
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    <p class="text-gray-600 flex-grow">
 
-                anchor.addEventListener('click', function (e) {
+                        A key end-customer who relies on accurate CLM data (via Deal Desk) to ensure Ironclad data integrity is maintained for financial reporting.
 
-                    // 1. Crucially prevents the default browser action (which can cause a page reload in some environments)
+                    </p>
 
-                    e.preventDefault();
+                </div>
 
+                
 
+                <!-- Partner 6: IT/DTS -->
 
-                    const targetId = this.getAttribute('href');
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-                    const targetElement = document.querySelector(targetId);
+                    <b class="text-xl mb-1 text-gray-900">IT/DTS (Data Technology & Security)</b>
 
-                    
+                    <p class="text-gray-600 flex-grow">
 
-                    if (targetElement) {
+                        Our internal IT business partners who manage system enhancements, security, and support AI tooling implementations. Critical for creating the <b>Ironclad Admin touch/workflow</b>.
 
-                        // 2. Manually trigger the scroll behavior
+                    </p>
 
-                        targetElement.scrollIntoView({
+                </div>
 
-                            behavior: 'smooth'
 
-                        });
 
-                        
+                <!-- Partner 7: Luke Paris's Data Engineering Team -->
 
-                        // 3. Update the URL hash without triggering navigation, for bookmarking/history
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-                        if (history.pushState) {
+                    <b class="text-xl mb-1 text-gray-900">Luke Paris's Data Engineering Team</b>
 
-                            history.pushState(null, null, targetId);
+                    <p class="text-gray-600 flex-grow">
 
-                        } else {
+                        Key contacts for data infrastructure, managing tables in Snowflake and Databricks, and supporting the critical PR merge process. Contacts include: <b>Scott Murray</b> and <b>Shishir Tewari</b>.
 
-                            window.location.hash = targetId;
+                    </p>
 
-                        }
+                </div>
 
-                    }
 
-                });
 
-            });
+                <!-- Partner 8: Rebecca Preston - GTM Enablement -->
 
-            
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-            // Initialize the dynamic roadmap view once DOM is ready
+                    <b class="text-xl mb-1 text-gray-900">Rebecca Preston - GTM Enablement</b>
 
-            renderRoadmap();
+                    <p class="text-gray-600 flex-grow">
 
-        });
+                        Owns the commercial GTM training and enablement strategy, serving as the essential partner for fixing upstream process and SOP gaps identified by data. <b>The point of contact for process changes.</b>
 
+                    </p>
 
+                </div>
 
-        
+                
+                <!-- Partner 9: Elevate Archiving Team -->
 
-        /**
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
 
-         * Function to toggle resolution notes visibility for challenge cards.
+                    <b class="text-xl mb-1 text-gray-900">Elevate Archiving Team</b>
 
-         * @param {number} id - The ID of the challenge (e.g., 1 for challenge-1).
+                    <p class="text-gray-600 flex-grow">
 
-         */
+                        Handles essential document archiving processes, ensuring long-term data accessibility and compliance for CLM agreements. Members: <b>Guneet</b> and <b>Salang</b>.
 
-        function toggleResolution(id) {
+                    </p>
 
-            const resolutionDiv = document.getElementById('resolution-' + id);
+                </div>
 
-            const button = document.getElementById('button-' + id);
+                
+                <!-- Partner 10: Deal Desk (NEW CUSTOMER) - Kept yellow border for differentiation as a 'customer' partner -->
 
+                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
 
+                    <b class="text-xl mb-1 text-gray-900">Deal Desk (Customer)</b>
 
-            if (!resolutionDiv || !button) {
+                    <p class="text-gray-600 flex-grow">
 
-                console.error(`Elements for challenge ID ${id} not found.`);
+                        A key consumer of CLM data. Historical process gaps in this team led to data remediation efforts required by Legal Operations to satisfy financial reporting requirements.
 
-                return;
+                    </p>
 
-            }
+                </div>
 
 
 
-            if (resolutionDiv.classList.contains('hidden')) {
+            </div>
 
-                // Show notes
+            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-                resolutionDiv.classList.remove('hidden');
+            <div class="mt-8 text-right">
 
-                button.textContent = 'Hide Resolution/Examples';
+                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-                button.classList.add('bg-gray-400');
+                    &uarr; Back to Top
 
-                button.classList.remove('procore-button');
+                </a>
 
-            } else {
+            </div>
 
-                // Hide notes
+        </section>
 
-                resolutionDiv.classList.add('hidden');
 
-                button.textContent = 'Show Resolution/Examples';
 
-                button.classList.remove('bg-gray-400');
+        <!-- Section: Key Actions (Now at the bottom) -->
 
-                button.classList.add('procore-button');
+        <section id="actions" class="py-10">
 
-            }
+            <div class="bg-white p-6 rounded-xl shadow-xl border-l-4 border-yellow-500">
 
-        }
+                <h2 class="text-3xl font-bold mb-4 procore-text-orange border-b-2 procore-border-orange pb-2 inline-block">Immediate Key Actions</h2>
 
-        
+                <p class="text-lg mb-6 text-gray-600">
 
-        /**
+                    These are critical setup items to ensure the transition team has the necessary access to begin work immediately.
 
-         * Function to toggle the visibility and icon of the Draft Roadmap section.
+                </p>
 
-         */
+                <ul class="space-y-3 text-lg">
 
-        function toggleRoadmap() {
+                    <li class="flex items-center text-gray-800">
 
-            const content = document.getElementById('draft-roadmap-content');
+                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-            const icon = document.getElementById('roadmap-toggle-icon');
+                        Access to Tableau for all team members (visualizations and dashboards).
 
-            
+                    </li>
 
-            if (content.classList.contains('hidden')) {
+                    <li class="flex items-center text-gray-800">
 
-                content.classList.remove('hidden');
+                        <!-- UPDATED ICON for 'Done' item for better consistency -->
 
-                icon.classList.add('rotate-180');
+                        <svg class="w-6 h-6 mr-3 text-green-500 opacity-60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-            } else {
+                        Access to Confluence for all team members (documentation and knowledge management portal) (Done).
 
-                content.classList.add('hidden');
+                    </li>
 
-                icon.classList.remove('rotate-180');
+                    <li class="flex items-center text-gray-800">
 
-            }
+                        <svg class="w-6 h-6 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-        }
+                        Access to JIRA dashboard for all team members (for task management and tracking).
 
-        
+                    </li>
 
-        /**
+                    <li class="flex items-center text-gray-800">
 
-         * Function to toggle inline details visibility for a roadmap card.
+                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-         */
+                        Daily site update (responsible: Dan).
 
-        function toggleDetails(element) {
+                    </li>
 
-            const detailDiv = element.querySelector('.roadmap-detail');
+                    <!-- UPDATED: Confirmed action item is correct and important for cross-reference -->
 
-            if (detailDiv) {
+                    <li class="flex items-center text-gray-800">
 
-                detailDiv.classList.toggle('hidden');
+                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-            }
+                        Add Opportunity Record Name field to the Tableau Opportunity Detail for easier cross-reference/research.
 
-        }
+                    </li>
 
+                    <!-- NEW ACTION ITEM ADDED -->
 
+                    <li class="flex items-center text-gray-800">
 
+                        <svg class="w-6 h-6 mr-3 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
+                        Dan to identify SFDC data ownership.
 
-        // --- NEW SWIMLANE ROADMAP LOGIC ---
+                    </li>
 
-        
+                </ul>
 
-        // Data extracted and condensed from the PDF, now including the Reporter field as 'requester'
+                
 
-        const roadmapData = [
+                <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
-            { id: 'LRC-2226', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Workforce Metrics', fullSummary: 'SFDC/Ironclad - GTM Legal Workforce Allocation Metrics (2026 Planning)', requester: 'Mick Cox' },
+                <div class="mt-6 pt-4 border-t border-gray-200 text-right">
 
-            { id: 'LRC-2176', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Legal Opps Management', fullSummary: 'SFDC/Ironclad - Legal Opportunities Management', requester: 'Emily See' },
+                    <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
 
-            { id: 'LRC-2188', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Review Ironclad Workflows', fullSummary: 'SFDC/Ironclad - Legal Review Ironclad Workflows (Q4 Updates)', requester: 'Daniel Baker' },
+                        &uarr; Back to Top
 
-            // MOVED TO BACKLOG
+                    </a>
 
-            { id: 'LRC-2213', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'Waiting for Customer', summary: 'Govt. Customer Contracts', fullSummary: 'SFDC/Ironclad /- Procore for Government- Customer Contracts', requester: 'Christyne Brennan' },
+                </div>
 
-            { id: 'LRC-2175', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Review Case Management', fullSummary: 'SFDC/Ironclad - Legal Review Case Management', requester: 'Emily See' },
+            </div>
 
-            { id: 'LRC-1752', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Success Metrics', fullSummary: 'SFDC/Ironclad-GTM Legal Success Metrics & Analytics', requester: 'Emily See' },
+        </section>
 
-            { id: 'LAC-2192', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Workforce Guide', fullSummary: 'SFDC/Ironclad GTML Workforce Allocation Dashboard Read. Me Guide Build', requester: 'Daniel Baker' },
 
-            
 
-            // MOVED TO BACKLOG
+    </main>
 
-            { id: 'LRC-1320', team: 'Product, Privacy, & IP', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Contract End Date System', fullSummary: 'SFDC/Ironclad We need a definitive system for the end of term date for customer contracts', requester: 'Matt Altaras' },
 
-            
 
-            { id: 'LAC-1777', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'On Hold', summary: 'Ironclad SSA Dashboard', fullSummary: 'SFDC/Ironclad Commercial Order Form and Subscription Agreement Dashboard', requester: 'Daniel Baker' },
+    <!-- Footer -->
 
-            
+    <footer class="procore-bg text-white py-6 mt-10">
 
-            // MOVED TO BACKLOG
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm opacity-80">
 
-            { id: 'LRC-2000', team: 'Legal Operations', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Fix Blank Sales Segment', fullSummary: 'SFDC/Ironclad - Sales Segment is Blank in Ironclad for 1265 SSA records', requester: 'Daniel Baker' },
+            LRC CLM Data Strategy Site. Last Updated: October 7, 2025.
 
-            
+        </div>
 
-            // Excluded Systems - kept in data but won't be rendered due to filter logic below
+    </footer>
 
-            { id: 'LRC-2198', team: 'Product, Privacy, & IP', quarter: 'Q4-FY25', status: 'In Progress', summary: 'MTL Transaction DB Req.', fullSummary: 'MTL-Transaction Database Requirements for Regulatory Examinations', requester: 'Sunni Wallace' }, 
 
-            
 
-            { id: 'LRC-2222', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'Open', summary: 'Vendor Contracts Reporting', fullSummary: 'SFDC/Ironclad - Reporting on Vendor Contracts in Tableau', requester: 'Sunni Wallace' },
+    <!-- JavaScript for resolution toggle and smooth scrolling -->
 
-            
+    <script>
 
-            // Excluded Systems - kept in data but won't be rendered due to filter logic below
+        console.log("Interactive site loaded. Custom JavaScript smooth scrolling enabled.");
 
-            { id: 'LRC-2199', team: 'Product, Privacy, & IP', quarter: 'Q4-FY25', status: 'In Progress', summary: 'MTL-ADTL Reporting', fullSummary: 'MTL-ADTL Reporting', requester: 'Srija Mokarala' }, 
+        
 
-            
+        /**
 
-            { id: 'LAC-1373', team: 'Finance', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Deal Desk Dashboard', fullSummary: 'SFDC/Ironclad Deal Desk Dashboard', requester: 'Daniel Baker' },
+         * Custom handler to force smooth scrolling for hash links and prevent page reload/redirect.
 
-            
+         */
 
-            // MOVED TO BACKLOG
+        document.addEventListener('DOMContentLoaded', () => {
 
-            { id: 'LRC-1991', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Capture Security Exhibit', fullSummary: 'SFDC/Ironclad - Process for capturing when Security Exhibit is Attached to SSA', requester: 'Emily See' },
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-            { id: 'LRC-1993', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'Open', summary: 'PubSec Deals Reporting', fullSummary: 'SFDC/Ironclad - Opportunities Dashboard: New Tab-Ability to report on PubSec Deals- Direct v Indirect', requester: 'Christyne Brennan' },
+                anchor.addEventListener('click', function (e) {
 
-            { id: 'LRC-1257', team: 'Product, Privacy, & IP', quarter: 'Q2-FY26', status: 'Open', summary: 'Design Beta Dashboard', fullSummary: 'SFDC/Ironclad - Design Beta Program Dashboard (IP Team)', requester: 'Jordan Ekelin' },
+                    // 1. Crucially prevents the default browser action (which can cause a page reload in some environments)
 
-            { id: 'LRC-2233', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'On Hold', summary: 'Import SSAs to Ironclad', fullSummary: 'SFDC/Ironclad - Significant tranche of active SSAs to be imported to Ironclad (incl. data remediation)', requester: 'Alice Bisgrove' },
+                    e.preventDefault();
 
-            
 
-            // Excluded Systems - kept in data but won't be rendered due to filter logic below
 
-            { id: 'LRC-2121', team: 'Office of the CLO', quarter: 'Q2-FY26', status: 'Open', summary: 'CLO Finance Dashboard', fullSummary: 'Pigment-CLO Finance Dashboard', requester: 'Daniel Baker' }, 
+                    const targetId = this.getAttribute('href');
 
-        ];
+                    const targetElement = document.querySelector(targetId);
 
+                    
 
+                    if (targetElement) {
 
-        // Custom mapping to treat Q2-FY26 as 'Backlog'
+                        // 2. Manually trigger the scroll behavior
 
-        const QUARTER_MAPPING = {
+                        targetElement.scrollIntoView({
 
-            'Q2-FY26': 'Backlog'
+                            behavior: 'smooth'
 
-        };
+                        });
 
+                        
 
+                        // 3. Update the URL hash without triggering navigation, for bookmarking/history
 
-        // --- Core Logic for System Grouping ---
+                        if (history.pushState) {
 
-        const getSystem = (fullSummary) => {
+                            history.pushState(null, null, targetId);
 
-            if (fullSummary.startsWith('SFDC/Ironclad') || fullSummary.startsWith('SFDCIronclad')) {
+                        } else {
 
-                return 'SFDC/Ironclad';
+                            window.location.hash = targetId;
 
-            }
+                        }
 
-            if (fullSummary.startsWith('MTL')) {
+                    }
 
-                return 'MTL';
+                });
 
-            }
+            });
 
-            if (fullSummary.startsWith('Pigment')) {
+            
 
-                return 'Pigment';
+            // Initialize the dynamic roadmap view once DOM is ready
 
-            }
+            renderRoadmap();
 
-            return 'Other';
+        });
 
-        };
 
 
+        
 
-        // 1. Process data: Add displayQuarter (Backlog) and System
+        /**
 
-        const processedData = roadmapData.map(item => ({
+         * Function to toggle resolution notes visibility for challenge cards.
 
-            ...item,
+         * @param {number} id - The ID of the challenge (e.g., 1 for challenge-1).
 
-            displayQuarter: QUARTER_MAPPING[item.quarter] || item.quarter,
+         */
 
-            system: getSystem(item.fullSummary)
+        function toggleResolution(id) {
 
-        }));
+            const resolutionDiv = document.getElementById('resolution-' + id);
 
+            const button = document.getElementById('button-' + id);
 
 
-        // 2. Determine unique quarters and systems
 
-        // Only render SFDC/Ironclad projects (and any projects mapped to 'Other', though currently empty)
+            if (!resolutionDiv || !button) {
 
-        const allSystems = [...new Set(processedData.map(item => item.system))]
+                console.error(`Elements for challenge ID ${id} not found.`);
 
-            .filter(system => system === 'SFDC/Ironclad' || system === 'Other') 
+                return;
 
-            .sort();
+            }
 
-            
 
-        // Sort quarters manually to ensure Backlog is at the end
 
-        const allQuarters = [...new Set(processedData.map(item => item.displayQuarter))].sort((a, b) => {
+            if (resolutionDiv.classList.contains('hidden')) {
 
-            // Force Q4-FY25 before Backlog
+                // Show notes
 
-            if (a === 'Backlog') return 1;
+                resolutionDiv.classList.remove('hidden');
 
-            if (b === 'Backlog') return -1;
+                button.textContent = 'Hide Resolution/Examples';
 
-            return a.localeCompare(b);
+                button.classList.add('bg-gray-400');
 
-        });
+                button.classList.remove('procore-button');
 
-        
+            } else {
 
-        // Retained for future filter use if needed
+                // Hide notes
 
-        let currentTeamFilter = 'All'; 
+                resolutionDiv.classList.add('hidden');
 
-        let currentStatusFilter = 'All'; 
+                button.textContent = 'Show Resolution/Examples';
 
+                button.classList.remove('bg-gray-400');
 
+                button.classList.add('procore-button');
 
-        /**
+            }
 
-         * Converts status string to a CSS-friendly class name.
+        }
 
-         */
+        
 
-        const getStatusClass = (status) => {
+        /**
 
-            return `status-${status.replace(/\s/g, '-')}`;
+         * Function to toggle the visibility and icon of the Draft Roadmap section.
 
-        };
+         */
 
+        function toggleRoadmap() {
 
+            const content = document.getElementById('draft-roadmap-content');
 
-        /**
+            const icon = document.getElementById('roadmap-toggle-icon');
 
-         * Renders the main roadmap container using System Swimlanes.
+            
 
-         */
+            if (content.classList.contains('hidden')) {
 
-        function renderRoadmap() {
+                content.classList.remove('hidden');
 
-            const mainContainer = document.getElementById('main-roadmap-container');
+                icon.classList.add('rotate-180');
 
-            if (!mainContainer) return;
+            } else {
 
+                content.classList.add('hidden');
 
+                icon.classList.remove('rotate-180');
 
-            mainContainer.innerHTML = '';
+            }
 
-            
+        }
 
-            // Iterate over Systems to create the main swimlanes
+        
 
-            allSystems.forEach(system => {
+        /**
 
-                // Filter all projects for this system, subject to filters
+         * Function to toggle inline details visibility for a roadmap card.
 
-                const itemsInSystem = processedData.filter(item => 
+         */
 
-                    item.system === system &&
+        function toggleDetails(element) {
 
-                    (currentTeamFilter === 'All' || item.team === currentTeamFilter) &&
+            const detailDiv = element.querySelector('.roadmap-detail');
 
-                    (currentStatusFilter === 'All' || item.status === currentStatusFilter)
+            if (detailDiv) {
 
-                );
+                detailDiv.classList.toggle('hidden');
 
+            }
 
+        }
 
-                if (itemsInSystem.length === 0) return; // Skip empty lanes
 
 
 
-                // Create the System Lane container
 
-                const systemLane = document.createElement('div');
+        // --- NEW SWIMLANE ROADMAP LOGIC ---
 
-                systemLane.className = 'system-lane-container';
+        
 
-                
+        // Data extracted and condensed from the PDF, now including the Reporter field as 'requester'
 
-                // System Header
+        const roadmapData = [
 
-                systemLane.innerHTML = `<h2 class="system-header">${system}</h2>`;
+            { id: 'LRC-2226', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Workforce Metrics', fullSummary: 'SFDC/Ironclad - GTM Legal Workforce Allocation Metrics (2026 Planning)', requester: 'Mick Cox' },
 
+            { id: 'LRC-2176', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Legal Opps Management', fullSummary: 'SFDC/Ironclad - Legal Opportunities Management', requester: 'Emily See' },
 
+            { id: 'LRC-2188', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Review Ironclad Workflows', fullSummary: 'SFDC/Ironclad - Legal Review Ironclad Workflows (Q4 Updates)', requester: 'Daniel Baker' },
 
-                // Create the Quarter flow container (horizontal scroll)
+            // MOVED TO BACKLOG
 
-                const flowContainer = document.createElement('div');
+            { id: 'LRC-2213', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'Waiting for Customer', summary: 'Govt. Customer Contracts', fullSummary: 'SFDC/Ironclad /- Procore for Government- Customer Contracts', requester: 'Christyne Brennan' },
 
-                flowContainer.className = 'roadmap-container-flow';
+            { id: 'LRC-2175', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Review Case Management', fullSummary: 'SFDC/Ironclad - Legal Review Case Management', requester: 'Emily See' },
 
+            { id: 'LRC-1752', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Success Metrics', fullSummary: 'SFDC/Ironclad-GTM Legal Success Metrics & Analytics', requester: 'Emily See' },
 
+            { id: 'LAC-2192', team: 'Go-To-Market', quarter: 'Q4-FY25', status: 'In Progress', summary: 'GTM Workforce Guide', fullSummary: 'SFDC/Ironclad GTML Workforce Allocation Dashboard Read. Me Guide Build', requester: 'Daniel Baker' },
 
-                // 1. Iterate over Quarters to create columns inside this system lane
+            
 
-                allQuarters.forEach(quarter => {
+            // MOVED TO BACKLOG
 
-                    const quarterColumn = document.createElement('div');
+            { id: 'LRC-1320', team: 'Product, Privacy, & IP', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Contract End Date System', fullSummary: 'SFDC/Ironclad We need a definitive system for the end of term date for customer contracts', requester: 'Matt Altaras' },
 
-                    quarterColumn.className = 'quarter-column';
+            
 
-                    
+            { id: 'LAC-1777', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'On Hold', summary: 'Ironclad SSA Dashboard', fullSummary: 'SFDC/Ironclad Commercial Order Form and Subscription Agreement Dashboard', requester: 'Daniel Baker' },
 
-                    // Quarter Header - Use special style for Backlog
+            
 
-                    const headerClass = quarter === 'Backlog' ? 'backlog-header' : 'quarter-header';
+            // MOVED TO BACKLOG
 
-                    quarterColumn.innerHTML = `<div class="${headerClass}">${quarter}</div>`;
+            { id: 'LRC-2000', team: 'Legal Operations', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Fix Blank Sales Segment', fullSummary: 'SFDC/Ironclad - Sales Segment is Blank in Ironclad for 1265 SSA records', requester: 'Daniel Baker' },
 
+            
 
+            // Excluded Systems - kept in data but won't be rendered due to filter logic below
 
-                    // 2. Filter projects for this specific System AND Quarter
+            { id: 'LRC-2198', team: 'Product, Privacy, & IP', quarter: 'Q4-FY25', status: 'In Progress', summary: 'MTL Transaction DB Req.', fullSummary: 'MTL-Transaction Database Requirements for Regulatory Examinations', requester: 'Sunni Wallace' }, 
 
-                    const itemsInQuarter = itemsInSystem.filter(item => item.displayQuarter === quarter);
+            
 
-                    
+            { id: 'LRC-2222', team: 'Legal Operations', quarter: 'Q4-FY25', status: 'Open', summary: 'Vendor Contracts Reporting', fullSummary: 'SFDC/Ironclad - Reporting on Vendor Contracts in Tableau', requester: 'Sunni Wallace' },
 
-                    const projectsList = document.createElement('div');
+            
 
-                    projectsList.className = 'space-y-3'; // Adds vertical spacing between cards
+            // Excluded Systems - kept in data but won't be rendered due to filter logic below
 
+            { id: 'LRC-2199', team: 'Product, Privacy, & IP', quarter: 'Q4-FY25', status: 'In Progress', summary: 'MTL-ADTL Reporting', fullSummary: 'MTL-ADTL Reporting', requester: 'Srija Mokarala' }, 
 
+            
 
-                    itemsInQuarter.forEach(item => {
+            { id: 'LAC-1373', team: 'Finance', quarter: 'Q4-FY25', status: 'In Progress', summary: 'Deal Desk Dashboard', fullSummary: 'SFDC/Ironclad Deal Desk Dashboard', requester: 'Daniel Baker' },
 
-                        const itemDiv = document.createElement('div');
+            
 
-                        itemDiv.className = 'roadmap-item text-sm';
+            // MOVED TO BACKLOG
 
-                        itemDiv.setAttribute('data-id', item.id);
+            { id: 'LRC-1991', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'In Progress', summary: 'Capture Security Exhibit', fullSummary: 'SFDC/Ironclad - Process for capturing when Security Exhibit is Attached to SSA', requester: 'Emily See' },
 
-                        // Using inline function call to reference the element for expansion
+            { id: 'LRC-1993', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'Open', summary: 'PubSec Deals Reporting', fullSummary: 'SFDC/Ironclad - Opportunities Dashboard: New Tab-Ability to report on PubSec Deals- Direct v Indirect', requester: 'Christyne Brennan' },
 
-                        itemDiv.setAttribute('onclick', 'toggleDetails(this)'); 
+            { id: 'LRC-1257', team: 'Product, Privacy, & IP', quarter: 'Q2-FY26', status: 'Open', summary: 'Design Beta Dashboard', fullSummary: 'SFDC/Ironclad - Design Beta Program Dashboard (IP Team)', requester: 'Jordan Ekelin' },
 
+            { id: 'LRC-2233', team: 'Go-To-Market', quarter: 'Q2-FY26', status: 'On Hold', summary: 'Import SSAs to Ironclad', fullSummary: 'SFDC/Ironclad - Significant tranche of active SSAs to be imported to Ironclad (incl. data remediation)', requester: 'Alice Bisgrove' },
 
+            
 
-                        // New HTML structure for inline expansion
+            // Excluded Systems - kept in data but won't be rendered due to filter logic below
 
-                        itemDiv.innerHTML = `
+            { id: 'LRC-2121', team: 'Office of the CLO', quarter: 'Q2-FY26', status: 'Open', summary: 'CLO Finance Dashboard', fullSummary: 'Pigment-CLO Finance Dashboard', requester: 'Daniel Baker' }, 
 
-                            <p class="font-semibold text-gray-800" title="${item.fullSummary}">${item.summary} <span class="text-xs font-mono text-gray-400">(${item.id})</span></p>
+        ];
 
 
 
-                            <!-- Collapsible Detail Content -->
+        // Custom mapping to treat Q2-FY26 as 'Backlog'
 
-                            <div class="roadmap-detail hidden mt-2 pt-2 border-t border-gray-100 text-xs text-gray-600 space-y-1">
+        const QUARTER_MAPPING = {
 
-                                <p class="font-medium text-gray-800">${item.fullSummary}</p>
+            'Q2-FY26': 'Backlog'
 
-                                <p><span class="card-label">Team:</span> <span class="card-value text-blue-600">${item.team}</span></p>
+        };
 
-                                <p><span class="card-label">Requester:</span> <span class="card-value">${item.requester}</span></p>
 
-                                <p><span class="card-label">Status:</span> <span class="status-pill ${getStatusClass(item.status)}">${item.status}</span></p>
 
-                                <p><span class="card-label">Quarter:</span> <span class="card-value">${item.quarter}</span></p>
+        // --- Core Logic for System Grouping ---
 
-                            </div>
+        const getSystem = (fullSummary) => {
 
-                        `;
+            if (fullSummary.startsWith('SFDC/Ironclad') || fullSummary.startsWith('SFDCIronclad')) {
 
-                        projectsList.appendChild(itemDiv);
+                return 'SFDC/Ironclad';
 
-                    });
+            }
 
+            if (fullSummary.startsWith('MTL')) {
 
+                return 'MTL';
 
-                    quarterColumn.appendChild(projectsList);
+            }
 
-                    flowContainer.appendChild(quarterColumn);
+            if (fullSummary.startsWith('Pigment')) {
 
-                });
+                return 'Pigment';
 
+            }
 
+            return 'Other';
 
-                systemLane.appendChild(flowContainer);
+        };
 
-                mainContainer.appendChild(systemLane);
 
-            });
 
-        }
+        // 1. Process data: Add displayQuarter (Backlog) and System
 
+        const processedData = roadmapData.map(item => ({
 
+            ...item,
 
-        // Removed showModal and closeModal functions
+            displayQuarter: QUARTER_MAPPING[item.quarter] || item.quarter,
 
-        
+            system: getSystem(item.fullSummary)
 
-        // Close modal when clicking outside (on the overlay) - this listener is now effectively unused but remains harmless
+        }));
 
-        document.getElementById('item-modal')?.addEventListener('click', (e) => {
 
-            if (e.target.id === 'item-modal') {
 
-                // closeModal is now gone, this block does nothing, but the element itself is removed from HTML
+        // 2. Determine unique quarters and systems
 
-            }
+        // Only render SFDC/Ironclad projects (and any projects mapped to 'Other', though currently empty)
 
-        });
+        const allSystems = [...new Set(processedData.map(item => item.system))]
 
-    </script>
+            .filter(system => system === 'SFDC/Ironclad' || system === 'Other') 
+
+            .sort();
+
+            
+
+        // Sort quarters manually to ensure Backlog is at the end
+
+        const allQuarters = [...new Set(processedData.map(item => item.displayQuarter))].sort((a, b) => {
+
+            // Force Q4-FY25 before Backlog
+
+            if (a === 'Backlog') return 1;
+
+            if (b === 'Backlog') return -1;
+
+            return a.localeCompare(b);
+
+        });
+
+        
+
+        // Retained for future filter use if needed
+
+        let currentTeamFilter = 'All'; 
+
+        let currentStatusFilter = 'All'; 
+
+
+
+        /**
+
+         * Converts status string to a CSS-friendly class name.
+
+         */
+
+        const getStatusClass = (status) => {
+
+            return `status-${status.replace(/\s/g, '-')}`;
+
+        };
+
+
+
+        /**
+
+         * Renders the main roadmap container using System Swimlanes.
+
+         */
+
+        function renderRoadmap() {
+
+            const mainContainer = document.getElementById('main-roadmap-container');
+
+            if (!mainContainer) return;
+
+
+
+            mainContainer.innerHTML = '';
+
+            
+
+            // Iterate over Systems to create the main swimlanes
+
+            allSystems.forEach(system => {
+
+                // Filter all projects for this system, subject to filters
+
+                const itemsInSystem = processedData.filter(item => 
+
+                    item.system === system &&
+
+                    (currentTeamFilter === 'All' || item.team === currentTeamFilter) &&
+
+                    (currentStatusFilter === 'All' || item.status === currentStatusFilter)
+
+                );
+
+
+
+                if (itemsInSystem.length === 0) return; // Skip empty lanes
+
+
+
+                // Create the System Lane container
+
+                const systemLane = document.createElement('div');
+
+                systemLane.className = 'system-lane-container';
+
+                
+
+                // System Header
+
+                systemLane.innerHTML = `<h2 class="system-header">${system}</h2>`;
+
+
+
+                // Create the Quarter flow container (horizontal scroll)
+
+                const flowContainer = document.createElement('div');
+
+                flowContainer.className = 'roadmap-container-flow';
+
+
+
+                // 1. Iterate over Quarters to create columns inside this system lane
+
+                allQuarters.forEach(quarter => {
+
+                    const quarterColumn = document.createElement('div');
+
+                    quarterColumn.className = 'quarter-column';
+
+                    
+
+                    // Quarter Header - Use special style for Backlog
+
+                    const headerClass = quarter === 'Backlog' ? 'backlog-header' : 'quarter-header';
+
+                    quarterColumn.innerHTML = `<div class="${headerClass}">${quarter}</div>`;
+
+
+
+                    // 2. Filter projects for this specific System AND Quarter
+
+                    const itemsInQuarter = itemsInSystem.filter(item => item.displayQuarter === quarter);
+
+                    
+
+                    const projectsList = document.createElement('div');
+
+                    projectsList.className = 'space-y-3'; // Adds vertical spacing between cards
+
+
+
+                    itemsInQuarter.forEach(item => {
+
+                        const itemDiv = document.createElement('div');
+
+                        itemDiv.className = 'roadmap-item text-sm';
+
+                        itemDiv.setAttribute('data-id', item.id);
+
+                        // Using inline function call to reference the element for expansion
+
+                        itemDiv.setAttribute('onclick', 'toggleDetails(this)'); 
+
+
+
+                        // New HTML structure for inline expansion
+
+                        itemDiv.innerHTML = `
+
+                            <p class="font-semibold text-gray-800" title="${item.fullSummary}">${item.summary} <span class="text-xs font-mono text-gray-400">(${item.id})</span></p>
+
+
+
+                            <!-- Collapsible Detail Content -->
+
+                            <div class="roadmap-detail hidden mt-2 pt-2 border-t border-gray-100 text-xs text-gray-600 space-y-1">
+
+                                <p class="font-medium text-gray-800">${item.fullSummary}</p>
+
+                                <p><span class="card-label">Team:</span> <span class="card-value text-blue-600">${item.team}</span></p>
+
+                                <p><span class="card-label">Requester:</span> <span class="card-value">${item.requester}</span></p>
+
+                                <p><span class="card-label">Status:</span> <span class="status-pill ${getStatusClass(item.status)}">${item.status}</span></p>
+
+                                <p><span class="card-label">Quarter:</span> <span class="card-value">${item.quarter}</span></p>
+
+                            </div>
+
+                        `;
+
+                        projectsList.appendChild(itemDiv);
+
+                    });
+
+
+
+                    quarterColumn.appendChild(projectsList);
+
+                    flowContainer.appendChild(quarterColumn);
+
+                });
+
+
+
+                systemLane.appendChild(flowContainer);
+
+                mainContainer.appendChild(systemLane);
+
+            });
+
+        }
+
+
+
+        // Removed showModal and closeModal functions
+
+        
+
+        // Close modal when clicking outside (on the overlay) - this listener is now effectively unused but remains harmless
+
+        document.getElementById('item-modal')?.addEventListener('click', (e) => {
+
+            if (e.target.id === 'item-modal') {
+
+                // closeModal is now gone, this block does nothing, but the element itself is removed from HTML
+
+            }
+
+        });
+
+    </script>
 
 </body>
 
