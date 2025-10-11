@@ -771,6 +771,7 @@
                         <p class="text-base font-semibold text-green-600 mb-2">Day 4 Recap Video (Watch Here):</p>
                         <!-- Iframe for responsive Google Drive Video Embed -->
                         <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+
                             <iframe
                                 src="https://drive.google.com/file/d/1o_TkxmJfjKEchSeGdX9D7h--0Fo88B12/preview"
                                 frameborder="0"
@@ -821,6 +822,99 @@
                     </div>
 
                 </div>
+                
+                
+                <!-- START NEW: Day 5 Agenda -->
+
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 5: Ticketing Triage & Data Integrity Deep Dive</h3>
+
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+
+                        <li>Deep dive into <b>Challenge 6 (Ticketing Template & Triage)</b>.</li>
+
+                        <li>Review current request model, gap analysis, and need for change management.</li>
+
+                        <li>Focus on <b>Challenge 7 (Revolving BI Door)</b>, specifically FX rate and Okta group seed file maintenance.</li>
+
+                        <li>Discussion on standardizing template knowledge (using Kalyani's and Srija's comprehensive templates).</li>
+
+                    </ul>
+
+                    
+
+                    <!-- Flexible spacer -->
+
+                    <div class="flex-grow"></div>
+
+                    
+                    <!-- Video element is now positioned at the bottom of the card (Using the provided video link) -->
+
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+
+                        <p class="text-base font-semibold text-green-600 mb-2">Day 5 Recap Video (Watch Here):</p>
+
+                        <!-- Iframe for responsive Google Drive Video Embed (UPDATED SOURCE) -->
+
+                        <div class="relative overflow-hidden w-full rounded-lg shadow-lg" style="padding-top: 56.25%;">
+
+                            <iframe
+
+                                src="https://drive.google.com/file/d/1350o6Vfw_bsA0-W4oNLd8o44pIfhtHgZ/preview"
+
+                                frameborder="0"
+
+                                allow="autoplay; encrypted-media"
+
+                                allowfullscreen
+
+                                class="absolute top-0 left-0 w-full h-full"
+
+                            ></iframe>
+
+                        </div>
+
+                    </div>
+
+                    
+                    <!-- NEW: Follow-up Button (Day 5) -->
+
+                    <button onclick="toggleResolution(500)" id="button-500" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+
+                        Show Day 5 Follow Ups
+
+                    </button>
+
+
+
+                    <!-- NEW: FOLLOW UP NOTES (Hidden by default) -->
+
+                    <div id="resolution-500" class="mt-4 pt-4 border-t border-gray-200 hidden">
+
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 5</h4>
+
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+
+                            <li>Dan to update tickets and Google Sheet with comprehensive template information including purpose, business problem, and other key details.</li>
+
+                            <li>Kalyani and Dan to schedule working meetings to go through dashboard tickets in detail.</li>
+
+                            <li>Team to contemplate resolution for FX rates issue (using centralized source vs. manual update).</li>
+
+                            <li>Team to implement the ticketing template and triage process for better request management.</li>
+                            
+                            <li>Srija and Mano to obtain Tableau Developer/Creator desktop access to support the new resourcing model.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                
+                <!-- END NEW: Day 5 Agenda -->
+
+
 
             </div>
 
@@ -1250,7 +1344,7 @@
 
                                 <b class="text-lg block mb-1">Agreement Structure Blueprint</b>
 
-                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling.</p>
+                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling in Ironclad</p>
 
                             </div>
 
@@ -1373,7 +1467,7 @@
 
         
 
-        <!-- Section: Key Reporting Dashboards -->
+        <!-- Section: Key Reporting Dashboards - RESTRUCTURED -->
 
         <section id="dashboards" class="py-10">
 
@@ -1381,11 +1475,15 @@
 
             <p class="text-lg mb-6 text-gray-600">These visualizations represent the current reporting environment and key metrics for GTM Legal performance.</p>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
+            
 
+            <!-- Production Dashboards -->
 
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 border-b-2 border-gray-300 pb-1">Production Dashboards</h3>
 
-                <!-- Dashboard 1: Legal Opportunities (NOTE: These remain external links and are NOT modified) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid mb-10">
+
+                <!-- Dashboard 1: Legal Opportunities -->
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalOpportunities?:iid=1" target="_blank" class="block">
 
@@ -1393,9 +1491,9 @@
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Opportunities</h3>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                        <span class="procore-text-orange font-semibold mt-auto">View Dashboard &rarr;</span>
 
                     </div>
 
@@ -1411,9 +1509,9 @@
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Cases</h3>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                        <span class="procore-text-orange font-semibold mt-auto">View Dashboard &rarr;</span>
 
                     </div>
 
@@ -1429,27 +1527,9 @@
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">All Opportunities</h3>
 
-                        <p class="text-sm text-gray-500 mb-3">GTMLegalDashboard-UAT-V2</p>
+                        
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- Dashboard 4: Quarterly Deal Trends -->
-
-                <a href="https://data.procore-it.com/#/views/GTMQuarterlyReport/GTMQuarterlyReport?:iid=5" target="_blank" class="block">
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
-
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Quarterly Deal Trends</h3>
-
-                        <p class="text-sm text-gray-500 mb-3">GTMQuarterlyReport</p>
-
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                        <span class="procore-text-orange font-semibold mt-auto">View Dashboard &rarr;</span>
 
                     </div>
 
@@ -1465,9 +1545,93 @@
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Pipeline Management</h3>
 
-                        <p class="text-sm text-gray-500 mb-3">Jira Dashboard (data-related tickets including SEDM success metrics)</p>
+                        
 
-                        <span class="procore-text-orange font-semibold">View Dashboard &rarr;</span>
+                        <span class="procore-text-orange font-semibold mt-auto">View Dashboard &rarr;</span>
+
+                    </div>
+
+                </a>
+
+
+
+            </div>
+
+            
+
+            <!-- Under Development Dashboards -->
+
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 border-b-2 border-gray-300 pb-1">Under Development Dashboards</h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 equal-height-grid">
+
+
+
+                <!-- Dashboard 4 (Moved): Quarterly Deal Trends -->
+
+                <a href="https://data.procore-it.com/#/views/GTMQuarterlyReport/GTMQuarterlyReport?:iid=5" target="_blank" class="block">
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Quarterly Deal Trends</h3>
+
+                        
+
+                        <span class="procore-text-orange font-semibold mt-auto">Under Development &rarr;</span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- NEW Dashboard: Ironclad - Commercial Order Form & Subscription Agreement Dashboard -->
+
+                <a href="https://data.procore-it.com/#/views/Ironclad-CommercialOrderFormSubscriptionAgreementDashboard/IroncladCommercialsubscriptionDashboard?:iid=1" target="_blank" class="block">
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad - Commercial Order Form & Subscription Agreement Dashboard ✅</h3>
+
+                        
+
+                        <span class="procore-text-orange font-semibold mt-auto">Under Development &rarr;</span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- NEW Dashboard: GTM Forecast -->
+
+                <a href="https://data.procore-it.com/#/views/GTMLegalWorkforceAllocationDashboardV1/GTM-Forecast" target="_blank" class="block">
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">GTM Forecast</h3>
+
+                        
+
+                        <span class="procore-text-orange font-semibold mt-auto">Under Development &rarr;</span>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- NEW Dashboard: Ironclad Legal Workflows -->
+
+                <a href="https://data.procore-it.com/#/views/GTMLegalWorkforceAllocationDashboardV1/IroncladLegalWorkflows?:iid=2" target="_blank" class="block">
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Legal Workflows</h3>
+
+                        
+
+                        <span class="procore-text-orange font-semibold mt-auto">Under Development &rarr;</span>
 
                     </div>
 
@@ -1682,6 +1846,25 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 equal-height-grid">
 
 
+                <!-- NEW Link: GTM Field Analysis -->
+                <a href="https://docs.google.com/spreadsheets/d/14gMtc0lTK00TZQOgZeCeMjp1c_RnCELxmKWTfyiumss/edit?gid=0#gid=0" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">GTM Field Analysis</h3>
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet (Data Fields)</p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
+
+                    </div>
+                </a>
+
+                <!-- NEW Link: Ironclad ↔ Salesforce Field Sync Mapping -->
+                <a href="https://procoretech.atlassian.net/wiki/spaces/FLT/pages/4012802247/Ironclad+Salesforce+Field+Sync+Mapping" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad ↔ Salesforce Field Sync Mapping</h3>
+                        <p class="text-sm text-gray-500 mb-3">Confluence Page</p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
+
+                    </div>
+                </a>
 
                 <!-- Link 1: Ironclad Procore Governance Model -->
 
@@ -1901,192 +2084,6 @@
 
 
 
-        <!-- Section: Key Partners & Stakeholders -->
-
-        <section id="team" class="py-10">
-
-            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key Partnerships & Support</h2>
-
-            <!-- Adjusted Grid: Now 5 columns on large screens to accommodate 10 cards evenly -->
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 equal-height-grid">
-
-                
-                <!-- Partner 1: CLO -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Chief Legal Officer (CLO)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Ben Singer is highly bullish on this team and instrumental in securing the resources needed for this evergreen support model.
-
-                    </p>
-
-                </div>
-
-                
-
-                <!-- Partner 2: Legal Operations (Kalyani & Vigi) -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Legal Operations (Kalyani & Vigi)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        The core team responsible for driving the data strategy, transition, and long-term success of CLM reporting and AI initiatives.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- Partner 3: LatentView & Core Team -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">LatentView Team (Srija & Mano)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        In-house experts and consulting groups providing critical BI expertise and support, essential for driving the new model forward.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- Partner 4: Commercial COE Team -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Commercial COE Team</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Manages contract migration into Ironclad and drives enablement and process standardization for commercial go-to-market functions.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- Partner 5: Financial Reporting Team (NEW CUSTOMer) - Kept yellow border for differentiation as a 'customer' partner -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
-
-                    <b class="text-xl mb-1 text-gray-900">Financial Reporting Team (Customer)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        A key end-customer who relies on accurate CLM data (via Deal Desk) to ensure Ironclad data integrity is maintained for financial reporting.
-
-                    </p>
-
-                </div>
-
-                
-                <!-- Partner 6: IT/DTS -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">IT/DTS (Data Technology & Security)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Our internal IT business partners who manage system enhancements, security, and support AI tooling implementations. Critical for creating the <b>Ironclad Admin touch/workflow</b>.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- Partner 7: Luke Paris's Data Engineering Team (MODIFIED) -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Luke Paris's Data Engineering Team</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Key contacts for data infrastructure, managing tables in Snowflake and Databricks, and supporting the critical PR merge process. Contacts include: <b>Amit Chaudhary (+Rooksana Sultana)</b>, <b>Scott Murray</b>, and <b>Shishir Tewari</b>.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- Partner 8: Rebecca Preston - GTM Enablement -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Rebecca Preston - GTM Enablement</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Owns the commercial GTM training and enablement strategy, serving as the essential partner for fixing upstream process and SOP gaps identified by data. <b>The point of contact for process changes.</b>
-
-                    </p>
-
-                </div>
-
-                
-                <!-- Partner 9: Elevate Archiving Team -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 procore-border-orange">
-
-                    <b class="text-xl mb-1 text-gray-900">Elevate Archiving Team</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        Handles essential document archiving processes, ensuring long-term data accessibility and compliance for CLM agreements. Members: <b>Guneet</b> and <b>Salang</b>.
-
-                    </p>
-
-                </div>
-
-                
-                <!-- Partner 10: Deal Desk (NEW CUSTOMER) - Kept yellow border for differentiation as a 'customer' partner -->
-
-                <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col h-full border-2 border-yellow-500">
-
-                    <b class="text-xl mb-1 text-gray-900">Deal Desk (Customer)</b>
-
-                    <p class="text-gray-600 flex-grow">
-
-                        A key consumer of CLM data. Historical process gaps in this team led to data remediation efforts required by Legal Operations to satisfy financial reporting requirements.
-
-                    </p>
-
-                </div>
-
-
-
-            </div>
-
-            <!-- Back to Top Link (Using standard hash link for native scrolling) -->
-
-            <div class="mt-8 text-right">
-
-                <a href="#overview" class="text-sm font-bold procore-text-orange hover:text-orange-700 transition duration-300">
-
-                    &uarr; Back to Top
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
         <!-- Section: Key Actions (Now at the bottom) - REMOVED -->
 
 
@@ -2101,7 +2098,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm opacity-80">
 
-            LRC CLM Data Strategy Site. Last Updated: October 7, 2025.
+            LRC CLM Data Strategy Site.
 
         </div>
 
@@ -2187,7 +2184,7 @@
 
          * Function to toggle resolution notes visibility for challenge cards.
 
-         * @param {number} id - The ID of the challenge (e.g., 1 for challenge-1).
+         * @param {number} id - The ID of the challenge (e.g., 1 for challenge-1, 100 for Day 1).
 
          */
 
@@ -2223,12 +2220,16 @@
                     button.textContent = 'Hide Day 3 Follow Ups';
                 } else if (id === 400) {
                     button.textContent = 'Hide Day 4 Follow Ups';
+                } else if (id === 500) { // <-- ADDED FOR DAY 5
+                    button.textContent = 'Hide Day 5 Follow Ups';
                 } else {
                     button.textContent = 'Hide Resolution/Examples'; // For Challenge 1-8
                 }
                 
                 button.classList.add('bg-gray-400');
+
                 button.classList.remove('procore-button');
+
 
             } else {
 
@@ -2244,6 +2245,8 @@
                     button.textContent = 'Show Day 3 Follow Ups';
                 } else if (id === 100) {
                     button.textContent = 'Show Day 1 Follow Ups';
+                } else if (id === 500) { // <-- ADDED FOR DAY 5
+                    button.textContent = 'Show Day 5 Follow Ups';
                 } else {
                     button.textContent = 'Show Resolution/Examples';
                 }
