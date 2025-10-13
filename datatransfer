@@ -104,6 +104,11 @@
 
         }
 
+        
+        /* New style to force a minimum height on the Strategic Plan cards for visual consistency */
+        .strategic-card {
+            min-height: 9rem; /* Ensures consistent card size even if text content is short */
+        }
 
 
         /* --- NEW SWIMLANE ROADMAP STYLES --- */
@@ -382,7 +387,7 @@
 
                 <a href="#challenges" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Challenges</a>
 
-                <a href="#roadmap" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Roadmap</a>
+                <a href="#roadmap" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Strategic Plan</a> <!-- UPDATED LINK TEXT -->
 
                 <a href="#dashboards" class="text-sm font-medium transition-colors duration-200 hover:text-gray-300 whitespace-nowrap">Dashboards</a>
 
@@ -1296,13 +1301,15 @@
 
 
 
-        <!-- Section: Roadmap & The Way Forward -->
+        <!-- Section: Strategic Plan (formerly Roadmap & The Way Forward) -->
 
         <section id="roadmap" class="py-10 bg-gray-100 rounded-xl">
 
             <div class="p-6">
 
-                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Roadmap & Opportunities</h2>
+                <!-- UPDATED TITLE -->
+
+                <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Strategic Plan</h2>
 
                 <p class="text-lg mb-8 text-gray-600">
 
@@ -1318,41 +1325,47 @@
 
                     <div>
 
+                        <!-- UPDATED: Removed (Ranked) from Phase 1 Title -->
+
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 1: Stabilization & Handover</h3>
 
                             <!-- Start of Phase 1 Card Grid for equal height -->
 
                         <div class="grid grid-cols-1 gap-6 equal-height-grid">
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                            
 
-                                <b class="text-lg block mb-1">Roadmap Build-out & Review</b>
+                            <!-- P1, Rank #1: Transition Document Review (Original P1-2) -->
 
-                                <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
 
-                            </div>
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
-
-                                <b class="text-lg block mb-1">Transition Document Review</b>
+                                <b class="text-lg block mb-1">1. Transition Document Review</b>
 
                                 <p class="text-gray-600 flex-grow">Systematic review of challenges, current model, and proposed solutions to ensure full context transfer.</p>
 
                             </div>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                            
 
-                                <b class="text-lg block mb-1">Agreement Structure Blueprint</b>
+                            <!-- P1, Rank #2: Current Ticket Triage (Original P1-4) -->
 
-                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling in Ironclad</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
+
+                                <b class="text-lg block mb-1">2. Current Ticket Triage</b>
+
+                                <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
 
                             </div>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full">
+                            
 
-                                <b class="text-lg block mb-1">Current Ticket Triage</b>
+                            <!-- P1, Rank #3: Roadmap Build-out & Review (Original P1-1) -->
 
-                                <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
+
+                                <b class="text-lg block mb-1">3. Roadmap Build-out & Review</b>
+
+                                <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
 
                             </div>
 
@@ -1368,37 +1381,53 @@
 
                     <div>
 
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI-Powered Analytics</h3>
+                        <!-- UPDATED PHASE 2 TITLE -->
+
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI Strategy and Data Family Strategy in Ironclad</h3>
 
                         <!-- Start of Phase 2 Card Grid for equal height -->
 
                         <div class="grid grid-cols-1 gap-6 equal-height-grid">
 
-                            <!-- MOVED CARD: AI Template Overlay Build -->
+                            
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                            <!-- P2, Rank #1: AI Template Overlay Build (Original P2-1) -->
 
-                                <b class="text-lg block mb-1">AI Template Overlay Build</b>
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+
+                                <b class="text-lg block mb-1">1. AI Template Overlay Build</b>
 
                                 <p class="text-gray-600 flex-grow">Implement the AI solution to instantly transform raw ticket descriptions into the new, standardized requirements template.</p>
 
                             </div>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                            
 
-                                <b class="text-lg block mb-1">Data & Reporting Transformation</b>
+                            <!-- P2, Rank #2: Agreement Structure Blueprint (Original P1-3 - MOVED) -->
+
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+
+                                <b class="text-lg block mb-1">2. Agreement Structure Blueprint</b>
+
+                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling in Ironclad</p>
+
+                            </div>
+
+
+
+                            <!-- P2, Rank #3: Data & Reporting Transformation (Original P2-2) -->
+
+                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+
+                                <b class="text-lg block mb-1">3. Data & Reporting Transformation</b>
 
                                 <p class="text-gray-600 flex-grow">Implement a two-pronged AI strategy to move reporting from a multi-day build cycle to a natural language query, transforming analytics.</p>
 
                             </div>
 
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full">
+                            
 
-                                <b class="text-lg block mb-1">Knowledge Management & Portal</b>
-
-                                <p class="text-gray-600 flex-grow">Establish clear communications, transparency, and a dedicated portal (Confluence site) to broadcast wins and share knowledge across the organization.</p>
-
-                            </div>
+                            <!-- REMOVED: Knowledge Management & Portal (Original P2-3) -->
 
                         </div>
 
@@ -1487,7 +1516,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalOpportunities?:iid=1" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Opportunities</h3>
 
@@ -1505,7 +1534,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/LegalCases?:iid=1" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Legal Cases</h3>
 
@@ -1523,7 +1552,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalDashboard-UAT-V2/AllOpportunities?:iid=2" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">All Opportunities</h3>
 
@@ -1537,21 +1566,7 @@
 
 
 
-                <!-- Dashboard 5: Pipeline Management (Jira) -->
-
-                <a href="https://procoretech.atlassian.net/jira/dashboards/21644" target="_blank" class="block">
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
-
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Pipeline Management</h3>
-
-                        
-
-                        <span class="procore-text-orange font-semibold mt-auto">View Dashboard &rarr;</span>
-
-                    </div>
-
-                </a>
+                <!-- REMOVED: Dashboard 5: Pipeline Management (Jira) -->
 
 
 
@@ -1571,7 +1586,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMQuarterlyReport/GTMQuarterlyReport?:iid=5" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Quarterly Deal Trends</h3>
 
@@ -1589,9 +1604,11 @@
 
                 <a href="https://data.procore-it.com/#/views/Ironclad-CommercialOrderFormSubscriptionAgreementDashboard/IroncladCommercialsubscriptionDashboard?:iid=1" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad - Commercial Order Form & Subscription Agreement Dashboard ✅</h3>
+                        <!-- CHECKMARK REMOVED -->
+
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad - Commercial Order Form & Subscription Agreement Dashboard</h3>
 
                         
 
@@ -1607,7 +1624,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalWorkforceAllocationDashboardV1/GTM-Forecast" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">GTM Forecast</h3>
 
@@ -1625,7 +1642,7 @@
 
                 <a href="https://data.procore-it.com/#/views/GTMLegalWorkforceAllocationDashboardV1/IroncladLegalWorkflows?:iid=2" target="_blank" class="block">
 
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 hover:shadow-xl transition duration-300 flex flex-col h-full strategic-card">
 
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Legal Workflows</h3>
 
@@ -1833,11 +1850,13 @@
 
 
 
-        <!-- NEW SECTION: Key CLM Resources (Ironclad) -->
+        <!-- NEW SECTION: Key CLM Resources -->
 
         <section id="ironclad-links" class="py-10">
 
-            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key CLM Resources (Ironclad)</h2>
+            <!-- UPDATED: Removed (Ironclad) from section title -->
+
+            <h2 class="text-3xl font-bold mb-8 procore-text-orange border-b-4 procore-border-orange pb-2 inline-block">Key CLM Resources</h2>
 
             <p class="text-lg mb-6 text-gray-600">Centralized list of essential documentation, dashboards, and operational tools related to the CLM system and data archiving.</p>
 
@@ -1856,6 +1875,15 @@
                     </div>
                 </a>
 
+                <!-- NEW Link: LRC Data Reporting sheet -->
+                <a href="https://docs.google.com/spreadsheets/d/1QwtW7f0mtplhTJM9f3wpsGRIirHW2GF5_li2yLBhwGY/edit?gid=0#gid=0" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">LRC Data Reporting Sheet</h3>
+                        <p class="text-sm text-gray-500 mb-3">Google Sheet (Data Fields)</p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
+                    </div>
+                </a>
+                
                 <!-- NEW Link: Ironclad ↔ Salesforce Field Sync Mapping -->
                 <a href="https://procoretech.atlassian.net/wiki/spaces/FLT/pages/4012802247/Ironclad+Salesforce+Field+Sync+Mapping" target="_blank" class="block">
                     <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
@@ -1970,6 +1998,26 @@
 
                     </div>
 
+                </a>
+
+                
+
+                <!-- MOVED LINK: Pipeline Management (Jira) -->
+                <a href="https://procoretech.atlassian.net/jira/dashboards/21644" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">Pipeline Management Dashboard</h3>
+                        <p class="text-sm text-gray-500 mb-3">Jira Dashboard</p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- NEW LINK: TechManager Request Form -->
+                <a href="https://procoretech.atlassian.net/servicedesk/customer/portal/114/group/458/create/5010" target="_blank" class="block">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-1 text-gray-900">TechManager Request Form</h3>
+                        <p class="text-sm text-gray-500 mb-3">Jira Service Desk</p>
+                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
+                    </div>
                 </a>
 
 
@@ -2097,9 +2145,7 @@
     <footer class="procore-bg text-white py-6 mt-10">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm opacity-80">
-
-            LRC CLM Data Strategy Site.
-
+            <!-- Footer content removed per user request -->
         </div>
 
     </footer>
