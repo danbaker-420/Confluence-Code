@@ -929,6 +929,45 @@
                 
                 <!-- END NEW: Day 5 Agenda -->
 
+                
+                <!-- START NEW: Day 6-7 Agenda -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 6-7: AI Triage & Q4 Focus</h3>
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
+                        <li><b>Day 6 Agenda (30min):</b>
+                            <ul class="list-disc pl-5 text-base">
+                                <li>Rovo AI triaging demo</li>
+                                <li>How to use (training)</li>
+                                <li>Identify sections to implement for use</li>
+                            </ul>
+                        </li>
+                        <li><b>Day 7 Agenda (20min):</b>
+                            <ul class="list-disc pl-5 text-base">
+                                <li>Identify 3-5 most important actions to execute in Q4</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Flexible spacer -->
+                    <div class="flex-grow"></div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-base font-semibold text-green-600 mb-2">Recap Video:</p>
+                        <p class="text-sm text-gray-500">Video link pending confirmation for Day 6-7.</p>
+                    </div>
+
+                    <button onclick="toggleResolution(607)" id="button-607" class="procore-button mt-4 px-3 py-2 text-sm rounded-lg font-bold shadow-md transition-colors duration-200">
+                        Show Day 6-7 Follow Ups
+                    </button>
+
+                    <div id="resolution-607" class="mt-4 pt-4 border-t border-gray-200 hidden">
+                        <h4 class="text-lg font-bold procore-text-orange mb-2">Follow Ups from Day 6-7</h4>
+                        <ul class="space-y-2 text-sm text-gray-700 list-disc pl-5">
+                            <li>To be defined after the sessions.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END NEW: Day 6-7 Agenda -->
 
 
             </div>
@@ -1329,122 +1368,50 @@
 
 
 
+                <!-- Phase Headers aligned with the 2-column card layout below -->
                 <div class="grid lg:grid-cols-2 gap-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 1: Stabilization & Handover</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI Strategy and Data Family Strategy in Ironclad</h3>
+                </div>
 
-                    <!-- Column 1: Core Transition Steps (Phase 1) -->
-
-                    <div>
-
-                        <!-- UPDATED: Removed (Ranked) from Phase 1 Title -->
-
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 1: Stabilization & Handover</h3>
-
-                            <!-- Start of Phase 1 Card Grid for equal height -->
-
-                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
-
-                            
-
-                            <!-- P1, Rank #1: Transition Document Review (Original P1-2) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">1. Transition Document Review</b>
-
-                                <p class="text-gray-600 flex-grow">Systematic review of challenges, current model, and proposed solutions to ensure full context transfer.</p>
-
-                            </div>
-
-                            
-
-                            <!-- P1, Rank #2: Current Ticket Triage (Original P1-4) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">2. Current Ticket Triage</b>
-
-                                <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
-
-                            </div>
-
-                            
-
-                            <!-- P1, Rank #3: Roadmap Build-out & Review (Original P1-1) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">3. Roadmap Build-out & Review</b>
-
-                                <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
-
-                            </div>
-
-                        </div>
-
-                        <!-- End of Phase 1 Card Grid -->
-
+                <!-- Combined grid for all 6 cards, ensuring they align in rows of 2 -->
+                <div class="grid lg:grid-cols-2 gap-6 equal-height-grid">
+                    
+                    <!-- Row 1: P1.1 (Left) and P2.1 (Right) -->
+                    <!-- P1, Rank #1: Transition Document Review (Original P1-2) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">1. Transition Document Review</b>
+                        <p class="text-gray-600 flex-grow">Systematic review of challenges, current model, and proposed solutions to ensure full context transfer.</p>
+                    </div>
+                    <!-- P2, Rank #1: AI Template Overlay Build (Original P2-1) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">1. AI Template Overlay Build</b>
+                        <p class="text-gray-600 flex-grow">Implement the AI solution to instantly transform raw ticket descriptions into the new, standardized requirements template.</p>
                     </div>
 
-
-
-                    <!-- Column 2: AI & Analytics Transformation (Phase 2) -->
-
-                    <div>
-
-                        <!-- UPDATED PHASE 2 TITLE -->
-
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phase 2: AI Strategy and Data Family Strategy in Ironclad</h3>
-
-                        <!-- Start of Phase 2 Card Grid for equal height -->
-
-                        <div class="grid grid-cols-1 gap-6 equal-height-grid">
-
-                            
-
-                            <!-- P2, Rank #1: AI Template Overlay Build (Original P2-1) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">1. AI Template Overlay Build</b>
-
-                                <p class="text-gray-600 flex-grow">Implement the AI solution to instantly transform raw ticket descriptions into the new, standardized requirements template.</p>
-
-                            </div>
-
-                            
-
-                            <!-- P2, Rank #2: Agreement Structure Blueprint (Original P1-3 - MOVED) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">2. Agreement Structure Blueprint</b>
-
-                                <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling in Ironclad</p>
-
-                            </div>
-
-
-
-                            <!-- P2, Rank #3: Data & Reporting Transformation (Original P2-2) -->
-
-                            <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
-
-                                <b class="text-lg block mb-1">3. Data & Reporting Transformation</b>
-
-                                <p class="text-gray-600 flex-grow">Implement a two-pronged AI strategy to move reporting from a multi-day build cycle to a natural language query, transforming analytics.</p>
-
-                            </div>
-
-                            
-
-                            <!-- REMOVED: Knowledge Management & Portal (Original P2-3) -->
-
-                        </div>
-
-                        <!-- End of Phase 2 Card Grid -->
-
+                    <!-- Row 2: P1.2 (Left) and P2.2 (Right) -->
+                    <!-- P1, Rank #2: Current Ticket Triage (Original P1-4) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">2. Current Ticket Triage</b>
+                        <p class="text-gray-600 flex-grow">Review and prioritization of existing tickets, focusing on transforming placeholders and anecdotal descriptions into actionable work items.</p>
                     </div>
-
+                    <!-- P2, Rank #2: Agreement Structure Blueprint (Original P1-3 - MOVED) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">2. Agreement Structure Blueprint</b>
+                        <p class="text-gray-600 flex-grow">Define the agreement lifecycle (New Logo vs. Renewal) and required document relationships (SSAs, Order Forms, Amendments) to standardize data understanding and modeling in Ironclad</p>
+                    </div>
+                    
+                    <!-- Row 3: P1.3 (Left) and P2.3 (Right) -->
+                    <!-- P1, Rank #3: Roadmap Build-out & Review (Original P1-1) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">3. Roadmap Build-out & Review</b>
+                        <p class="text-gray-600 flex-grow">Collaboratively define, detail, and schedule the priority projects for the CLM Data Strategy, moving from high-level objectives to actionable plans.</p>
+                    </div>
+                    <!-- P2, Rank #3: Data & Reporting Transformation (Original P2-2) -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-green-500 flex flex-col h-full strategic-card">
+                        <b class="text-lg block mb-1">3. Data & Reporting Transformation</b>
+                        <p class="text-gray-600 flex-grow">Implement a two-pronged AI strategy to move reporting from a multi-day build cycle to a natural language query, transforming analytics.</p>
+                    </div>
                 </div>
 
                 
@@ -2030,6 +1997,15 @@
                 </a>
 
 
+                <!-- Link 8: Ironclad Workflow Contract Templates (STATIC URL) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 flex flex-col h-full">
+                    <h3 class="text-xl font-bold mb-1 text-gray-900">Contract Templates Folder</h3>
+                    <p class="text-sm text-gray-500 mb-3">Google Drive</p>
+                    <p class="text-sm font-semibold text-red-700 break-all cursor-text">
+                        Please copy/paste the link below:
+                    </p>
+                    <code class="text-xs text-blue-800 break-all bg-gray-100 p-1 rounded">https://drive.google.com/drive/folders/18WQr2PKetElN7ho6LAwlM6kt39ecusJA</code>
+                </div>
 
                 <!-- Link 7: Ironclad Okta Groups -->
 
@@ -2040,24 +2016,6 @@
                         <h3 class="text-xl font-bold mb-1 text-gray-900">Ironclad Okta Groups</h3>
 
                         <p class="text-sm text-gray-500 mb-3">Confluence Page</p>
-
-                        <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- Link 8: Ironclad Workflow Contract Templates -->
-
-                <a href="https://drive.google.com/drive/folders/18WQr2PKetElN7ho6LAwlM6kt39ecusJA" target="_blank" class="block">
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
-
-                        <h3 class="text-xl font-bold mb-1 text-gray-900">Contract Templates Folder</h3>
-
-                        <p class="text-sm text-gray-500 mb-3">Google Drive</p>
 
                         <span class="procore-text-orange font-semibold">View Resource &rarr;</span>
 
@@ -2275,8 +2233,10 @@
                     button.textContent = 'Hide Day 3 Follow Ups';
                 } else if (id === 400) {
                     button.textContent = 'Hide Day 4 Follow Ups';
-                } else if (id === 500) { // <-- ADDED FOR DAY 5
+                } else if (id === 500) { 
                     button.textContent = 'Hide Day 5 Follow Ups';
+                } else if (id === 607) { // <-- ADDED FOR DAY 6-7
+                    button.textContent = 'Hide Day 6-7 Follow Ups';
                 } else {
                     button.textContent = 'Hide Resolution/Examples'; // For Challenge 1-8
                 }
@@ -2300,8 +2260,10 @@
                     button.textContent = 'Show Day 3 Follow Ups';
                 } else if (id === 100) {
                     button.textContent = 'Show Day 1 Follow Ups';
-                } else if (id === 500) { // <-- ADDED FOR DAY 5
+                } else if (id === 500) { 
                     button.textContent = 'Show Day 5 Follow Ups';
+                } else if (id === 607) { // <-- ADDED FOR DAY 6-7
+                    button.textContent = 'Show Day 6-7 Follow Ups';
                 } else {
                     button.textContent = 'Show Resolution/Examples';
                 }
