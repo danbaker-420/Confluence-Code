@@ -934,18 +934,8 @@
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
                     <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 6-7: AI Triage & Q4 Focus</h3>
                     <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
-                        <li><b>Day 6 Agenda (30min):</b>
-                            <ul class="list-disc pl-5 text-base">
-                                <li>Rovo AI triaging demo</li>
-                                <li>How to use (training)</li>
-                                <li>Identify sections to implement for use</li>
-                            </ul>
-                        </li>
-                        <li><b>Day 7 Agenda (20min):</b>
-                            <ul class="list-disc pl-5 text-base">
-                                <li>Identify 3-5 most important actions to execute in Q4</li>
-                            </ul>
-                        </li>
+                        <li><b>Day 6 Agenda (30min):</b> <b>Rovo AI triaging demo</b> | <b>How to use (training)</b> | <b>Identify template sections to implement for use</b></li>
+                        <li><b>Day 7 Agenda (20min):</b> Focus on <b>identifying 3-5 most important actions</b> to execute in Q4.</li>
                     </ul>
 
                     <!-- Flexible spacer -->
@@ -1048,7 +1038,7 @@
 
                                 <li><b>Remediation Next Steps:</b> Download the Opportunity Detail into a Google worksheet and sort/filter on Service End Date to identify which agreements are currently active. All source agreements are available in SFDC within the Customer Opportunities section.</li>
 
-                                <li><b>System Dependency:</b> Work with Emily See and the GTM Commercial COE to upload agreements into Ironclad. This requires a mini-workflow in Ironclad built to associate each new imported deal with an Ironclad workflow ID for reporting purposes.</li>
+                                <li><b>System Dependency:</b> Work with Emily See and the GTM Commercial COE to upload agreements into Ironclad. This requires a mini-workflow in Ironclad built to associate each new imported deal with an an Ironclad workflow ID for reporting purposes.</li>
 
                             </ul>
 
@@ -1414,6 +1404,18 @@
                     </div>
                 </div>
 
+                <!-- START NEW: Q4 Priority Areas of Execution -->
+                <div class="mt-8 pt-6 border-t border-gray-300">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-400 pb-1 inline-block">Priority Areas of Execution for Q4</h3>
+                    <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-procore-orange pl-5">
+                        <li><b>Resolve Segment Mapping from SFDC:</b> Fix the data integration flaw that prevents accurate Fallback Usage reporting (related to Challenge 4).</li>
+                        <li><b>Deliver Report of SSAs to GTM Commercial COE:</b> Provide the GTM team with the prioritized list of active SSAs (Parent Agreements) missing in Ironclad for import planning (related to Challenge 1).</li>
+                        <li><b>Build Import Workflow for SSAs:</b> Create the mini-workflow necessary in Ironclad to ingest historical agreements and assign a unique Workflow ID for proper reporting.</li>
+                        <li><b>Finish Minor Production Dashboard Enhancements:</b> Complete non-data-related, outstanding small-scale improvements to ensure current production dashboards meet immediate user needs.</li>
+                        <li><b>Update Q4 Deliverables with ROVO & Stakeholder Interviews:</b> Finalize requirements by interviewing related stakeholders, integrate the new ROVO triaging agent, and <b>reprioritize all current Q4 deliverables</b> based on these findings.</li>
+                    </ul>
+                </div>
+                <!-- END NEW: Q4 Priority Areas of Execution -->
                 
                 <!-- NEW: Collapsible Draft Roadmap Container -->
 
@@ -1454,7 +1456,6 @@
                 </div>
 
                 
-
                 <!-- Back to Top Link (Using standard hash link for native scrolling) -->
 
                 <div class="mt-8 text-right">
