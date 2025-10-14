@@ -372,9 +372,9 @@
                 <span class="procore-text-orange">LRC</span> CLM Data Strategy
 
             </h1>
-
             
-
+            <!-- REMOVED: NEW: Global Meeting Metadata -->
+            
             <!-- Navigation Menu (Using standard hash links for native scrolling) -->
 
             <nav class="flex space-x-4 overflow-x-auto nav-scroll py-1">
@@ -428,12 +428,19 @@
                     CLM Data Strategy: The Road Ahead
 
                 </h2>
+                
+                <!-- Reduced margin from mb-8 to mb-2 to make space for the metadata -->
+                <p class="text-xl font-bold mb-2 procore-text-orange">
 
-                <p class="text-xl font-bold mb-8 procore-text-orange">
-
-                    Data Bootcamp and Knowledge Transfer (Oct 6 - 13, 2025)
+                    Data Bootcamp and Knowledge Transfer (Oct 6 - 14, 2025)
 
                 </p>
+
+                <!-- NEW LOCATION: Global Meeting Metadata (Underneath Bootcamp Date) -->
+                <p class="text-xs text-yellow-300 italic opacity-80 mt-1 mb-4">
+                    Facilitator: <b>Dan Baker</b> | Participants: <b>Kalyani Pagadrai, Vighnesh Channa, Srija Mokarala, Manoranjan Padhi</b>
+                </p>
+                <!-- End Global Meeting Metadata -->
 
                 <div class="border-t border-gray-500 pt-6">
 
@@ -666,6 +673,9 @@
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 procore-border-orange flex flex-col h-full w-full">
 
                     <h3 class="text-2xl font-bold mb-4 text-gray-900">Day 3: Data Hygiene & Mapping Deep Dive</h3>
+                    
+                    <!-- REMOVED: NEW: Meeting Metadata -->
+                    
 
                     <ul class="space-y-3 text-lg text-gray-700 list-inside list-disc marker:text-yellow-500">
 
@@ -673,7 +683,7 @@
 
                         <li>Review <b>Parent Agreement Gap</b> resolution steps (Tableau walkthrough).</li>
 
-                        <li>Deep dive into Fallback Usage and Segment reporting challenges.</li>
+                        <li>Deep dive into Fallback Usage and Segment reporting (examples) challenges.</li>
 
                         <li>Discussing key data field capture and integrity issues (Challenge 2)</li>
 
@@ -2001,7 +2011,6 @@
                 </a>
 
                 
-
                 <!-- MOVED LINK: Pipeline Management (Jira) -->
                 <a href="https://procoretech.atlassian.net/jira/dashboards/21644" target="_blank" class="block">
                     <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition duration-300 flex flex-col h-full">
