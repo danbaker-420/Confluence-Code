@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvey Insights Dashboard | Procore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.2.2/wordcloud2.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --procore-orange: #F57F26;
+            --procore-dark: #121D28;
+            --procore-gray: #515A62;
+            --procore-light-gray: #f8fafc;
+            --procore-blue: #0076B6;
+            --procore-border: #E1E8ED;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--procore-light-gray); color: var(--procore-dark); }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .modal-active { overflow: hidden; }
+        #detailModal { position: fixed; inset: 0; display: none; align-items: flex-start; justify-content: center; z-index: 1000; padding: 4rem 1rem; }
+
+        .badge { padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .badge-assist { background-color: #e0f2fe; color: #0369a1; }
+        .badge-review { background-color: #fef3c7; color: #92400e; }
+        .badge-time { background-color: #f0fdf4; color: #166534; border: 1px solid #dcfce7; }
+        .badge-award { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+        .badge-role { background-color: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+        .badge-usecase { background-color: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+        .badge-step { background-color: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+        .badge-workflow { background-color: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
+
+        .nav-tab { padding: 20px 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; border-bottom: 3px solid transparent; color: #94a3b8; }
+        .nav-tab:hover { color: white; }
+        .nav-tab.tab-active { color: var(--procore-orange); border-bottom: 3px solid var(--procore-orange) !important; }
+
+        .folder-tab { padding: 8px 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; background: #e2e8f0; color: #64748b; border-radius: 8px 8px 0 0; border: 1px solid #cbd5e1; }
+        .folder-tab:hover { background: #cbd5e1; color: var(--procore-dark); }
+        .folder-tab.active-section { background: white; color: var(--procore-orange); padding-top: 10px; margin-top: -2px; border-top: 2px solid var(--procore-orange); }
+
+        .sort-header { cursor: pointer; user-select: none; position: relative; }
+        .sort-header:hover { background-color: #f1f5f9; }
+        .sort-icon { display: inline-block; margin-left: 4px; font-size: 0.8rem; opacity: 0.5; }
+
+        .filter-select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l8 8 8-8'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; }
+
+        .sticky-header { position: sticky; top: 0; z-index: 100; background-color: var(--procore-dark); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sticky-toolbar { position: sticky; top: 64px; z-index: 90; background-color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border-bottom: 1px solid var(--procore-border); }
+
+        .procore-card { background: white; border-left: 4px solid var(--procore-orange); transition: transform 0.2s, box-shadow 0.2s; height: 100%; display: flex; flex-direction: column; }
+        .procore-card:hover, .roadmap-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+
+        .award-card { background: white; border: 1px solid var(--procore-border); border-radius: 12px; overflow: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; cursor: pointer; }
+        .award-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .award-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #F57F26, #0076B6); }
+
+        .group-header { background-color: #f8fafc; border-top: 2px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; cursor: pointer; transition: background-color 0.2s; }
+        .group-header:hover { background-color: #f1f5f9; }
+        .chevron-icon { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .chevron-collapsed { transform: rotate(-90deg); }
+
+        .chart-container { position: relative; background: white; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--procore-border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+
+        .engagement-row { transition: background-color 0.2s; border-bottom: 1px solid var(--procore-border); }
+        .engagement-row:hover { background-color: #f8fafc; }
+
+        .narrative-box { margin-top: 1.25rem; padding: 1.5rem; background-color: #f8fafc; border-left: 4px solid var(--procore-orange); border-radius: 0 0.5rem 0.5rem 0; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02); }
+
+        .roadmap-card { background: white; border: 1px solid var(--procore-border); border-radius: 12px; padding: 1.5rem; transition: all 0.2s; border-left: 4px solid #6d28d9; cursor: pointer; height: 100%; display: flex; flex-direction: column; }
+
+        /* Awards Branded Styles */
+        .awards-header-bg { background: linear-gradient(135deg, #121D28 0%, #1e293b 100%); position: relative; overflow: hidden; }
+        .procore-watermark { position: absolute; right: -5%; top: 50%; transform: translateY(-50%) rotate(15deg); opacity: 0.05; pointer-events: none; width: 500px; height: 500px; }
+        .engineering-grid { background-image: radial-gradient(rgba(245, 127, 38, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+    </style>
+</head>
+<body class="text-slate-800 text-sm">
+
+    <!-- SVG Definitions for Reusable Icons -->
+    <svg style="display:none;">
+        <defs>
+            <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></symbol>
+            <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></symbol>
+            <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></symbol>
+            <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></symbol>
+            <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"/></symbol>
+        </defs>
+    </svg>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-[2000] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Export Loader -->
+    <div id="exportLoader" class="fixed inset-0 z-[300] bg-slate-900/60 backdrop-blur-sm flex flex-col items-center justify-start pt-12 transition-all duration-300 opacity-0 pointer-events-none">
+        <div class="bg-white p-8 rounded-xl shadow-2xl flex flex-col items-center gap-4">
+            <div class="w-12 h-12 border-4 border-slate-100 border-t-[#F57F26] rounded-full animate-spin"></div>
+            <div class="flex flex-col items-center">
+                <p class="text-xs font-black uppercase tracking-widest text-slate-900" id="loaderTitle">Processing Export</p>
+                <p class="text-[10px] text-slate-400 font-bold uppercase mt-1" id="loaderSub">This may take a moment...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="min-h-screen flex flex-col">
+        <header class="sticky-header text-white h-16 flex items-center">
+            <div class="max-w-[1600px] w-full mx-auto px-6 flex items-center justify-between">
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3">
+                        <img src="https://cdn.brandfetch.io/idwKTGuytf/w/200/h/200/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1759474413549" 
+                             alt="Procore Logo" class="w-8 h-8 rounded-md object-cover shadow-lg" onerror="this.src='https://placehold.co/100x100?text=P'">
+                        <h1 class="text-sm font-black tracking-tight uppercase text-white/90 whitespace-nowrap">Harvey <span class="text-[#F57F26]">insights</span></h1>
+                    </div>
+                    
+                    <div class="h-8 w-px bg-slate-700 hidden md:block mx-4"></div>
+                    <div class="hidden md:flex flex-col justify-center min-w-[100px]">
+                        <p class="text-[7px] uppercase font-black tracking-widest text-slate-500 leading-none mb-1">Reporting Period</p>
+                        <div id="dateRangeDisplay" class="flex flex-col gap-0.5">
+                            <span class="text-[9px] font-black text-[#F57F26] leading-none uppercase">Awaiting Data...</span>
+                        </div>
+                    </div>
+
+                    <nav class="flex space-x-8 items-center ml-6">
+                        <button onclick="switchTab('explorer')" id="tabExplorer" class="nav-tab tab-active">Explorer</button>
+                        <button onclick="switchTab('usage')" id="tabUsage" class="nav-tab">Team Usage</button>
+                        <button onclick="switchTab('kpis')" id="tabKpis" class="nav-tab">KPIS</button>
+                        <button onclick="switchTab('exec')" id="tabExec" class="nav-tab">Exec Summary</button>
+                    </nav>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-[9px] uppercase font-bold tracking-widest text-slate-400 leading-none mb-1">Hours Reclaimed</p>
+                        <p class="text-lg font-black text-indigo-400 leading-none" id="headerTotalHours">0h</p>
+                    </div>
+                    <div class="text-right hidden lg:block border-l border-slate-700 pl-6 h-8 flex flex-col justify-center">
+                        <p class="text-[9px] uppercase font-bold tracking-widest text-slate-400 leading-none mb-1">Total Threads</p>
+                        <p class="text-lg font-black text-white leading-none" id="recordStats">0</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="globalToolbar" class="sticky-toolbar">
+            <div class="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4 flex-grow"></div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <button onclick="switchTab('awards')" class="flex items-center justify-center gap-2 px-4 h-[32px] bg-emerald-600 text-white hover:bg-emerald-700 rounded text-[9px] font-black uppercase tracking-wider">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.1-.381z"/></svg>
+                            AI Amplifier Awards
+                        </button>
+                        <button id="execExportBtn" onclick="handleExecExport()" class="flex items-center justify-center gap-2 px-4 h-[32px] bg-slate-800 text-white hover:bg-black rounded text-[10px] font-black uppercase tracking-wider">
+                            <svg class="w-3.5 h-3.5"><use href="#icon-download"></use></svg>
+                            Exec Export
+                        </button>
+                        <label id="importAction" class="cursor-pointer bg-[#F57F26] hover:bg-[#e06d15] text-white px-4 h-[32px] flex items-center gap-2 rounded transition-all shadow-sm">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                            <span class="text-[10px] font-black uppercase tracking-wider">Import CSV</span>
+                            <input type="file" id="csvUpload" class="hidden" accept=".csv">
+                        </label>
+                        <button id="clearDataBtn" onclick="clearLocalData()" class="hidden flex items-center justify-center gap-2 px-4 h-[32px] bg-red-50 text-red-600 hover:bg-red-100 rounded text-[10px] font-black uppercase tracking-wider">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3H4v2h16V7h-3z"/></svg>
+                            Clear Local
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-grow max-w-[1600px] mx-auto px-6 py-8 w-full">
+            <!-- MAIN CONTENT SECTIONS - Placeholder for brevity -->
+            <!-- [Explorer, Team Usage, KPIs, Exec Summary, and Awards views would go here] -->
+        </main>
+    </div>
+
+    <!-- SINGLE CONSOLIDATED MODAL DEFINITION (Removed Duplicate) -->
+    <div id="detailModal" class="hidden" role="dialog">
+        <div onclick="closeModal()" class="fixed inset-0 bg-[#121D28]/90 backdrop-blur-md transition-opacity"></div>
+        <div id="modalBox" class="relative bg-white rounded-xl shadow-2xl text-left overflow-hidden transform transition-all w-full max-w-4xl max-h-[85vh] flex flex-col pointer-events-auto z-[1001]">
+            <div class="px-6 py-3 border-b border-slate-100 flex items-center justify-between bg-slate-50 shrink-0">
+                <h3 class="text-sm font-black text-slate-900 uppercase tracking-tight" id="modalTitle">Record Details</h3>
+                <div class="flex items-center gap-3">
+                    <div id="modalLinkContainer"></div>
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 transition-colors p-1.5 hover:bg-slate-200 rounded-full">
+                        <svg class="w-5 h-5"><use href="#icon-close"></use></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="px-6 py-5 space-y-5 overflow-y-auto custom-scrollbar flex-grow" id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONSOLIDATED CONFIGURATION & CONSTANTS
+        // ============================================
+        
+        // Financial rates
+        const RATE_ATTORNEY = 176;
+        const RATE_NON_ATTORNEY = 99;
+        const MULTIPLIER_OUTSIDE_COUNSEL = 3.0;
+        
+        // System settings
+        const PREFERRED_TIMEZONE = 'America/Los_Angeles';
+        
+        // Strategic domain classification
+        const HIGH_STAKES_DOMAINS = [
+            "Data Privacy & AI Governance",
+            "M&A, Corporate Finance & Governance", 
+            "Regulatory Compliance & Policy",
+            "Litigation, Disputes & Corporate Integrity", 
+            "Strategic Contract Negotiation & Risk"
+        ];
+
+        // Verb analysis for NLP processing
+        const STRATEGIC_VERBS = new Set([
+            "analyze", "summarize", "draft", "review", "reviewing", "drafting", "extract", "comparing", "compare",
+            "research", "identify", "identifying", "validate", "validating", "verify", "verifying", "generate",
+            "generating", "create", "creating", "redline", "redlining", "negotiate", "negotiating", "explain",
+            "explaining", "synthesize", "synthesizing", "rephrase", "rephrasing", "rewrite", "rewriting",
+            "outline", "outlining", "map", "mapping", "audit", "auditing", "scrutinize", "simplify", "check",
+            "checking", "reconcile", "reconciling", "evaluate", "evaluating", "interpret", "interpreting",
+            "assess", "assessing", "formalize", "update", "updating", "refine", "refining", "search", "searching"
+        ]);
+
+        // User directory (Note: Full directory would be loaded here)
+        const USER_DIRECTORY = {
+            "jessica.dean@procore.com": { name: "Jessica Dean", pa: "Legal Operations", role: "Non-Attorney" },
+            "matthew.altaras@procore.com": { name: "Matt Altaras", pa: "Product, Privacy, & IP", role: "Attorney" },
+            "julie.hoxie@procore.com": { name: "Julie Hoxie", pa: "Employment, Litigation, & Compliance", role: "Attorney" },
+            // ... [Additional user entries would continue here]
+        };
+
+        // ============================================
+        // MODAL MANAGEMENT FUNCTIONS
+        // ============================================
+        
+        function openModal(title, content) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('detailModal').classList.remove('hidden');
+            document.getElementById('detailModal').style.display = 'flex';
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+            document.body.classList.remove('modal-active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('detailModal')?.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ============================================
+        // TAB SWITCHING (Consolidated)
+        // ============================================
+        
+        function switchTab(tabName) {
+            // Hide all views
+            document.querySelectorAll('[id^="view"]').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected view
+            const viewId = 'view' + tabName.charAt(0).toUpperCase() + tabName.slice(1);
+            const view = document.getElementById(viewId);
+            if (view) {
+                view.classList.remove('hidden');
+            }
+
+            // Update nav tab styling
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('tab-active'));
+            const tab = document.getElementById('tab' + tabName.charAt(0).toUpperCase() + tabName.slice(1));
+            if (tab) {
+                tab.classList.add('tab-active');
+            }
+        }
+
+        // ============================================
+        // UTILITY FUNCTIONS (To be populated)
+        // ============================================
+        
+        function handleExecExport() {
+            console.log('Export handler - to be implemented');
+        }
+
+        function clearLocalData() {
+            if (confirm('Clear all local data?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard initialized');
+            console.log('Configuration loaded:', {
+                attorneyRate: RATE_ATTORNEY,
+                nonAttorneyRate: RATE_NON_ATTORNEY,
+                counselMultiplier: MULTIPLIER_OUTSIDE_COUNSEL
+            });
+        });
+    </script>
+</body>
+</html>
